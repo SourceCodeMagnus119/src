@@ -6,7 +6,6 @@ const path = require('node:path');
 const { app, BrowserWindow } = require('electron');
 const { dialog } = require('electron');
 const { globalShortcut } = require('electron');
-const { error } = require('node:console');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
