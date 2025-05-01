@@ -6,6 +6,7 @@ const path = require('node:path');
 const { app, BrowserWindow } = require('electron');
 const { dialog } = require('electron');
 const { globalShortcut } = require('electron');
+const { error } = require('node:console');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -40,6 +41,34 @@ const createWindow = () => {
     } else if(result.response === 4) {
       mainWindow.loadURL("http://amazon.com");
     }
+  }).catch((err) => {
+    console.log(`Error running dialigue box ${err}`);
+  });
+
+  app.whenReady().then(() => {
+    globalShortcut.register('Ctrl+M', () => {
+      dialog.showMessageBox({
+        type: 'question',
+        buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Cancel'],
+        title: 'Choose Website',
+        message: 'Which website would you like to visit?',
+      }).then((result) => {
+        if (result.response === 0) {
+          mainWindow.loadURL("http://youtube.com");
+        } else if (result.response === 1) {
+          mainWindow.loadURL("http://google.com");
+        } else if (result.response === 2) {
+          mainWindow.loadURL("http://gmail.com");
+        } else if(result.response === 3) {
+          mainWindow.loadURL("http://Netflx.com");
+        } else if(result.response === 4) {
+          mainWindow.loadURL("http://amazon.com");
+        }
+      }).catch((err) => {
+        console.log(`Error Launching Dialogue window:: ${err}`);
+      });
+    
+    });
   });
 
   // Global window shortcut to restart active window.
