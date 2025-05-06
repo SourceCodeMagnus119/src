@@ -66,14 +66,21 @@ const createWindow = () => {
       }).catch((err) => {
         console.log(`Error Launching Dialogue window:: ${err}`);
       });
-    
     });
   });
 
   // Global window shortcut to restart active window.
   app.whenReady().then(() => {
     globalShortcut.register('Ctrl+R', () => {
-      mainWindow.reload();
+        mainWindow.reload();
+    });
+  });
+
+  app.whenReady().then(() => {
+    globalShortcut.register('Ctrl+Backspace', () => {
+        if (mainWindow && mainWindow.webContents.canGoBack()) {
+            mainWindow.webContents.goBack();
+        }
     });
   });
 
@@ -100,4 +107,4 @@ app.on('window-all-closed', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
-module.exports = { createWindow, app };
+module.exports = { app, mainWindow };
