@@ -23,9 +23,42 @@ const createWindow = () => {
     },
   });
 
+  // Do not open more than 1 dialogue box
+  // let dialogOpen = false;
+
+  // const showDialog = () => {
+  //   if (dialogOpen) return;
+  //   dialogOpen = true;
+
+  //   dialog.showMessageBox({
+  //     type: 'question',
+  //     buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Cancel'],
+  //     title: 'Choose Website',
+  //     message: 'Which website would you like to visit?',
+  //   }).then((result) => {
+  //     dialogOpen = false; // Reset the flag after the dialog is closed
+  //     if (result.response === 0) {
+  //       mainWindow.loadURL("http://youtube.com");
+  //     } else if (result.response === 1) {
+  //       mainWindow.loadURL("http://google.com");
+  //     } else if (result.response === 2) {
+  //       mainWindow.loadURL("http://gmail.com");
+  //     } else if (result.response === 3) {
+  //       mainWindow.loadURL("http://netflix.com");
+  //     } else if (result.response === 4) {
+  //       mainWindow.loadURL("http://amazon.com");
+  //     }
+  //   }).catch((err) => {
+  //     dialogOpen = false; // Reset the flag in case of an error
+  //     console.log(`Error running dialogue box ${err}`);
+  //   });
+  // };
+
+  // showDialog();
+
   dialog.showMessageBox({
     type: 'question',
-    buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Cancel'],
+    buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Pinterest', 'Cancel'],
     title: 'Choose Website',
     message: 'Which website would you like to visit?',
   }).then((result) => {
@@ -39,6 +72,8 @@ const createWindow = () => {
       mainWindow.loadURL("http://Netflx.com");
     } else if(result.response === 4) {
       mainWindow.loadURL("http://amazon.com");
+    } else if(result.response === 5) {
+      mainWindow.loadURL("http://pinterest.com");
     }
   }).catch((err) => {
     console.log(`Error running dialigue box ${err}`);
@@ -48,7 +83,7 @@ const createWindow = () => {
     globalShortcut.register('Ctrl+M', () => {
       dialog.showMessageBox({
         type: 'question',
-        buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Cancel'],
+        buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Pinterest', 'Cancel'],
         title: 'Choose Website',
         message: 'Which website would you like to visit?',
       }).then((result) => {
@@ -62,6 +97,8 @@ const createWindow = () => {
           mainWindow.loadURL("http://Netflx.com");
         } else if(result.response === 4) {
           mainWindow.loadURL("http://amazon.com");
+        } else if(result.response === 5) {
+          mainWindow.loadURL("http://pinterest.com");
         }
       }).catch((err) => {
         console.log(`Error Launching Dialogue window:: ${err}`);
@@ -69,7 +106,6 @@ const createWindow = () => {
     });
   });
 
-  // Global window shortcut to restart active window.
   app.whenReady().then(() => {
     globalShortcut.register('Ctrl+R', () => {
       mainWindow.reload();
@@ -77,7 +113,7 @@ const createWindow = () => {
   });
 
   app.whenReady().then(() => {
-    globalShortcut.register('Backspace', () => {
+    globalShortcut.register('Alt+Backspace', () => {
       if (mainWindow && mainWindow.webContents.canGoBack()) {
         mainWindow.webContents.goBack();
       }
