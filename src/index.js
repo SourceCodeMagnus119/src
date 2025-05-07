@@ -45,18 +45,27 @@ const createWindow = () => {
     title: 'Choose Website',
     message: 'Which website would you like to visit?',
   }).then((result) => {
-    if (result.response === 0) {
-      mainWindow.loadURL("http://youtube.com");
-    } else if (result.response === 1) {
-      mainWindow.loadURL("http://google.com");
-    } else if (result.response === 2) {
-      mainWindow.loadURL("http://gmail.com");
-    } else if(result.response === 3) {
-      mainWindow.loadURL("http://Netflx.com");
-    } else if(result.response === 4) {
-      mainWindow.loadURL("http://amazon.com");
-    } else if(result.response === 5) {
-      mainWindow.loadURL("http://pinterest.com");
+    switch (result.response) {
+      case 0:
+        mainWindow.loadURL("http://youtube.com");
+        break;
+      case 1:
+        mainWindow.loadURL("http://google.com");
+        break;
+      case 2:
+        mainWindow.loadURL("http://gmail.com");
+        break;
+      case 3:
+        mainWindow.loadURL("http://netflix.com");
+        break;
+      case 4:
+        mainWindow.loadURL("http://amazon.com");
+        break;
+      case 5:
+        mainWindow.loadURL("http://pinterest.com");
+        break;
+      default:
+        console.log("No valid selection made.");
     }
   }).catch((err) => {
     console.log(`Error running dialigue box ${err}`);
@@ -70,18 +79,27 @@ const createWindow = () => {
         title: 'Choose Website',
         message: 'Which website would you like to visit?',
       }).then((result) => {
-        if (result.response === 0) {
-          mainWindow.loadURL("http://youtube.com");
-        } else if (result.response === 1) {
-          mainWindow.loadURL("http://google.com");
-        } else if (result.response === 2) {
-          mainWindow.loadURL("http://gmail.com");
-        } else if(result.response === 3) {
-          mainWindow.loadURL("http://Netflx.com");
-        } else if(result.response === 4) {
-          mainWindow.loadURL("http://amazon.com");
-        } else if(result.response === 5) {
-          mainWindow.loadURL("http://pinterest.com");
+        switch (result.response) {
+          case 0:
+            mainWindow.loadURL("http://youtube.com");
+            break;
+          case 1:
+            mainWindow.loadURL("http://google.com");
+            break;
+          case 2:
+            mainWindow.loadURL("http://gmail.com");
+            break;
+          case 3:
+            mainWindow.loadURL("http://netflix.com");
+            break;
+          case 4:
+            mainWindow.loadURL("http://amazon.com");
+            break;
+          case 5:
+            mainWindow.loadURL("http://pinterest.com");
+            break;
+          default:
+            console.log("No valid selection made.");
         }
       }).catch((err) => {
         console.log(`Error Launching Dialogue window:: ${err}`);
@@ -93,17 +111,23 @@ const createWindow = () => {
     globalShortcut.register('Ctrl+R', () => {
       mainWindow.reload();
     });
-  });
 
-  app.whenReady().then(() => {
     globalShortcut.register('Alt+Backspace', () => {
       if (mainWindow && mainWindow.webContents.canGoBack()) {
         mainWindow.webContents.goBack();
       }
     });
+
+    globalShortcut.register('Alt+]', () => {
+      if (mainWindow && mainWindow.webContents.canGoForward()) {
+      mainWindow.webContents.goForward();
+      }
+    });
   });
 
   // mainWindow.webContents.openDevTools();
+  // mainWindow.setMenu();
+  // mainWindow.setMenuBarVisibility();
 };
 
 app.whenReady().then(() => {
