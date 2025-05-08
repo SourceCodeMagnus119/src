@@ -124,8 +124,10 @@ const createWindow = () => {
       timeoutType: 'default',
     });
     
-    notification.show();
-    // notification.sound();
+    setTimeout(() => {
+      notification.show();
+      // notification.sound();
+    }, 2000);
   };
 
 
