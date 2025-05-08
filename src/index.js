@@ -6,6 +6,7 @@ const path = require('node:path');
 const { app, BrowserWindow } = require('electron');
 const { dialog } = require('electron');
 const { globalShortcut } = require('electron');
+const { Notification } = require('electron');
 const os = require('os');
 const cluster = require('cluster');
 
@@ -35,6 +36,10 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
+      // nodeIntegration: false,
+      // contextIsolation: true,
+      // enableRemoteModule: false,
+      // sandbox: true,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
@@ -107,6 +112,23 @@ const createWindow = () => {
     });
   });
 
+  const Notification_Title = 'Test-Notification';
+  const Notification_Body = 'Test Notification from the main process.';
+
+  function showNotification() {
+
+    const notification = new Notification({
+      title: Notification_Title,
+      body: Notification_Body,
+      silent: false, // Ensures the notification makes a sound
+      timeoutType: 'default',
+    });
+    
+    notification.show();
+    // notification.sound();
+  };
+
+
   app.whenReady().then(() => {
     globalShortcut.register('Ctrl+R', () => {
       mainWindow.reload();
@@ -123,7 +145,7 @@ const createWindow = () => {
       mainWindow.webContents.goForward();
       }
     });
-  });
+  }).then(showNotification);
 
   // mainWindow.webContents.openDevTools();
   // mainWindow.setMenu();
