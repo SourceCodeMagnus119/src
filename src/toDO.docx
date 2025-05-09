@@ -1,4 +1,4 @@
-✅ 1. Memory optimization. 
+✅ 1. Memory optimization x Multi-Core Processing.
 ✅ 2. Previous Website State Save/ Navigation History State Persistance. (MAX_3 websites state save ).
 ~~ 3. Exit Timer for the doalogue Window.
 4. Excess dialogue window creation bug.
@@ -6,4 +6,5 @@
 6. Local Dektop Executables(Games, Photo-Editors, Photos, Movies&TV).
 ✅ 7. Notifcation System (Display-Only && Interactive);
 8. Progress Bar.
-9. COMMAND_LINE_INTEGRATION: Recognize as an internal and external command (`syff -run`) with shell script, batch file or clackJS.
+9. COMMAND_LINE_INTEGRATION: Recognize as an internal and external command (`syff -run`) flag with shell script, batch file or clackJS.
+10. Custom Window Frame x Custom Menu.
