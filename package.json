@@ -9,11 +9,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\"",
-    "transpile:electron": "tsc --project ./forge.config.js",
-    "dist:mac": "electron-forge make --platform=darwin && electron-builder --mac --arm64",
-    "dist:win": "electron-forge make --platform=win32 && electron-builder --win --x64",
-    "dist:linux": "electron-forge make --platform=linux && electron-builder --linux --x64"
+    "lint": "echo \"No linting configured\""
   },
   "keywords": [],
   "author": {
