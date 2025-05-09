@@ -36,11 +36,18 @@ const createWindow = () => {
     // icon: "./assets/thumbnail.favicon",
     width: 800,
     height: 600,
+    frame: false,
+    transparent: false,
+    roundedCorners: true,
+    titleBarOverlay: false,
+    visualEffectState: 'active',
+    titleBarStyle: 'customButtonsOnHover',
     webPreferences: {
       nodeIntegration: true,
       // contextIsolation: true,
       // enableRemoteModule: false,
       // sandbox: true,
+      webSecurity: true,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
