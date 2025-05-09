@@ -2,13 +2,14 @@
  * @param Syff APP
  * @author PAUL JH GOWASEB <SourceCodeMagnus119> email: <paulusg131@gmail.com>
  */
-const path = require('node:path');
-const { app, BrowserWindow } = require('electron');
-const { dialog } = require('electron');
+const { shortcutKeyBinds_default, shortcutKeyBinds_websites } = require('./proc/shortcutKeyBinds');
+const { app, BrowserWindow, ipcMain } = require('electron');
+// const progressBarHandler = require('./proc/progressBar');
+const showNotification = require('./proc/notification');
 const { globalShortcut } = require('electron');
-const { Notification } = require('electron');
-const os = require('os');
 const cluster = require('cluster');
+const path = require('node:path');
+const os = require('os');
 
 if(cluster.isPrimary) {
   const numCPU = os.cpus().length;
@@ -36,7 +37,7 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      // nodeIntegration: false,
+      nodeIntegration: true,
       // contextIsolation: true,
       // enableRemoteModule: false,
       // sandbox: true,
@@ -44,94 +45,11 @@ const createWindow = () => {
     },
   });
 
-  dialog.showMessageBox({
-    type: 'question',
-    buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Pinterest', 'Cancel'],
-    title: 'Choose Website',
-    message: 'Which website would you like to visit?',
-  }).then((result) => {
-    switch (result.response) {
-      case 0:
-        mainWindow.loadURL("http://youtube.com");
-        break;
-      case 1:
-        mainWindow.loadURL("http://google.com");
-        break;
-      case 2:
-        mainWindow.loadURL("http://gmail.com");
-        break;
-      case 3:
-        mainWindow.loadURL("http://netflix.com");
-        break;
-      case 4:
-        mainWindow.loadURL("http://amazon.com");
-        break;
-      case 5:
-        mainWindow.loadURL("http://pinterest.com");
-        break;
-      default:
-        console.log("No valid selection made.");
-    }
-  }).catch((err) => {
-    console.log(`Error running dialigue box ${err}`);
-  });
+  shortcutKeyBinds_default(mainWindow);
 
   app.whenReady().then(() => {
-    globalShortcut.register('Ctrl+M', () => {
-      dialog.showMessageBox({
-        type: 'question',
-        buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Pinterest', 'Cancel'],
-        title: 'Choose Website',
-        message: 'Which website would you like to visit?',
-      }).then((result) => {
-        switch (result.response) {
-          case 0:
-            mainWindow.loadURL("http://youtube.com");
-            break;
-          case 1:
-            mainWindow.loadURL("http://google.com");
-            break;
-          case 2:
-            mainWindow.loadURL("http://gmail.com");
-            break;
-          case 3:
-            mainWindow.loadURL("http://netflix.com");
-            break;
-          case 4:
-            mainWindow.loadURL("http://amazon.com");
-            break;
-          case 5:
-            mainWindow.loadURL("http://pinterest.com");
-            break;
-          default:
-            console.log("No valid selection made.");
-        }
-      }).catch((err) => {
-        console.log(`Error Launching Dialogue window:: ${err}`);
-      });
-    });
-  });
+    shortcutKeyBinds_websites(mainWindow);
 
-  const Notification_Title = 'Test-Notification';
-  const Notification_Body = 'Test Notification from the main process.';
-
-  function showNotification() {
-
-    const notification = new Notification({
-      title: Notification_Title,
-      body: Notification_Body,
-      silent: false, // Ensures the notification makes a sound
-      timeoutType: 'default',
-    });
-    
-    setTimeout(() => {
-      notification.show();
-      // notification.sound();
-    }, 2000);
-  };
-
-
-  app.whenReady().then(() => {
     globalShortcut.register('Ctrl+R', () => {
       mainWindow.reload();
     });
@@ -147,6 +65,13 @@ const createWindow = () => {
       mainWindow.webContents.goForward();
       }
     });
+
+    // if (typeof progressBarHandler === 'function') {
+    //   progressBarHandler(mainWindow);
+    // } else {
+    //   console.error('progressBarHandler is not a function or not defined properly.');
+    // }
+
   }).then(showNotification);
 
   // mainWindow.webContents.openDevTools();
