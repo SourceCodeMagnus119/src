@@ -1,0 +1,3 @@
+NOTE TO SELF:
+Thought about using electron + react. however even with the Node Integration Option Enabled,  I am left under impression that there is no way to import or require anything in to the UI part of the electron app aka renderer process, because require is not defined because it runs in browser environment, imports don't work because it is not a module and setting the type attribute of script tag to a module results in failure in resolving the specifier whatever the specifier might be, doesn't matter if it is 'react', 'fs' or 'os' or just anything. 
+it looks like the renderer process can only receive some node js api through preload and can use DOM manipulations or any other Browser api like any other browser script.
