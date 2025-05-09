@@ -2,7 +2,7 @@
  * @param Syff APP
  * @author PAUL JH GOWASEB <SourceCodeMagnus119> email: <paulusg131@gmail.com>
  */
-const { shortcutKeyBinds_default, shortcutKeyBinds_websites } = require('./proc/shortcutKeyBinds');
+const { shortcutKeyBinds_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects } = require('./proc/shortcutKeyBinds');
 const { app, BrowserWindow, ipcMain } = require('electron');
 // const progressBarHandler = require('./proc/progressBar');
 const showNotification = require('./proc/notification');
@@ -56,6 +56,7 @@ const createWindow = () => {
 
   app.whenReady().then(() => {
     shortcutKeyBinds_websites(mainWindow);
+    shortcutKeyBinds_exects(mainWindow);
 
     globalShortcut.register('Ctrl+R', () => {
       mainWindow.reload();
