@@ -1,0 +1,20 @@
+{
+    "appId": "com.syff.app",
+    "files": [
+        "./index.js", "dist-react"
+    ],
+    "icon": "./assets/syff.icon.png",
+    "mac": {
+        "target": "dmg",
+        "category": "public.app-category.utilities"
+    },
+    "linux": {
+        "target": ["AppImage", "deb"],
+        "icon": "build/icons",
+        "catagory": "utilitiy"
+    },
+    "win": {
+        "target": ["portable", "msi"],
+        "icon": "build/icon.ico"
+    }
+}
