@@ -1,6 +1,7 @@
 const { dialog } = require('electron');
 const { globalShortcut } = require('electron');
 const { app } = require('../index');
+const { exec } = require('child_process');
 
 function shortcutKeyBinds_default(mainWindow) {
     dialog.showMessageBox({
@@ -72,4 +73,57 @@ function shortcutKeyBinds_websites(mainWindow) {
     });
 }
 
-module.exports = { shortcutKeyBinds_default, shortcutKeyBinds_websites };
+function shortcutKeyBinds_exects(mainWindow) {
+    globalShortcut.register('Ctrl+K', () => {
+        dialog.showMessageBox({
+            type: 'question',
+            buttons: ['BitTorrent', 'Photos', 'Media Player', 'LocalSend', 'Cancel'],
+            title: 'Choose App',
+            message: 'Which App would you like to open?',
+        }).then((result) => {
+            switch (result.response) {
+                case 0:
+                    exec('"C:\\Program Files\\BitTorrent\\BitTorrent.exe"', (err) => {
+                        if (err) {
+                            console.error(`Failed to open BitTorrent: ${err.message}`);
+                        } else {
+                            console.log("BitTorrent opened successfully.");
+                        }
+                    });
+                    break;
+                case 1:
+                    exec('"C:\\Windows\\System32\\rundll32.exe" "C:\\Program Files\\Windows Photo Viewer\\PhotoViewer.dll", ImageView_Fullscreen', (err) => {
+                        if (err) {
+                            console.error(`Failed to open Photos: ${err.message}`);
+                        } else {
+                            console.log("Photos opened successfully.");
+                        }
+                    });
+                    break;
+                case 2:
+                    exec('"C:\\Program Files\\Windows Media Player\\wmplayer.exe"', (err) => {
+                        if (err) {
+                            console.error(`Failed to open Media Player: ${err.message}`);
+                        } else {
+                            console.log("Media Player opened successfully.");
+                        }
+                    });
+                    break;
+                case 3:
+                    exec('"C:\\Program Files\\LocalSend\\LocalSend.exe"', (err) => {
+                        if (err) {
+                            console.error(`Failed to open LocalSend: ${err.message}`);
+                        } else {
+                            console.log("LocalSend opened successfully.");
+                        }
+                    });
+                default:
+                    console.log("No valid selection made.");
+            }
+        }).catch((err) => {
+            console.log(`Error running dialog box: ${err}`);
+        });
+    });
+}
+
+module.exports = { shortcutKeyBinds_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects };
