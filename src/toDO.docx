@@ -3,8 +3,8 @@
 ~~ 3. Exit Timer for the doalogue Window.
 4. Excess dialogue window creation bug.
 ~~ 5. TOP-CENTRE Translucent Notification popup.
-6. Local Dektop Executables(Games, Photo-Editors, Photos, Movies&TV).
+✅ 6. Local Dektop Executables(Games, Photo-Editors, Photos, Movies&TV).
 ✅ 7. Notifcation System (Display-Only && Interactive);
 8. Progress Bar.
 9. COMMAND_LINE_INTEGRATION: Recognize as an internal and external command (`syff -run`) flag with shell script, batch file or clackJS.
-10. Custom Window Frame x Custom Menu.
+✅ 10. Custom Window Frame x Custom Menu.
