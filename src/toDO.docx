@@ -8,3 +8,4 @@
 8. Progress Bar.
 9. COMMAND_LINE_INTEGRATION: Recognize as an internal and external command (`syff -run`) flag with shell script, batch file or clackJS.
 ✅ 10. Custom Window Frame x Custom Menu.
+✅ 11. Custom App Icon.
