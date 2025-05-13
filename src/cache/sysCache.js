@@ -8,6 +8,7 @@ const cacheSystemData = (data) => {
 
     const encryptedData = crypto.createCipher('aes-256-cbc', hashKey)
     .update(JSON.stringify(data), 'utf8', 'hex');
+    
     return encryptedData;
 };
 
