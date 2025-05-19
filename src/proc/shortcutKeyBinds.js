@@ -3,7 +3,7 @@ const { globalShortcut } = require('electron');
 const { app } = require('../index');
 const { exec } = require('child_process');
 
-function shortcutKeyBinds_default(mainWindow) {
+function popupWindow_default(mainWindow) {
     dialog.showMessageBox({
         type: 'question',
         buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Pinterest', 'Cancel'],
@@ -126,4 +126,4 @@ function shortcutKeyBinds_exects(mainWindow) {
     });
 }
 
-module.exports = { shortcutKeyBinds_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects };
+module.exports = { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects };
