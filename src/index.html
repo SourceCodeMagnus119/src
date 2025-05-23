@@ -4,20 +4,37 @@
     <meta charset="UTF-8" />
     <title>Hello World!</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="Syff icon" href="syff-app-icon.favicon.ico" type="image/x-icon">
   </head>
   <body>
     <header>
-      <div class="window-controls">
-      <button class="minimize">_</button>
-      <button class="maximize">□</button>
-      <button class="close">×</button>
-
+      <!-- Search Bar -->
       <div class="search-bar">
-        <input type="text" placeholder="Search..." />
+        <input type="text" placeholder="🔍Search..." />
         <button class="search-button">🔍</button>
       </div>
+
+      <!-- Window minimize, maximize, close -->
+      <div class="window-controls">
+        <button class="minimize">_</button>
+        <button class="maximize">□</button>
+        <button class="close">×</button>
       </div>
     </header>
+
+    <!-- Side Bar  -->
+    <div class="side-bar" id="side-bar">
+      <h1>SYFF</h1>
+      <!-- 4 buttons (History, Customize, Profile, Settings ) with icons -->
+
+      <!-- Line Divider between main page and sideBar. Position: right -->
+
+      <!-- Footer -->
+    </div>
+
+    <!-- Main Page -->
+    <div class="main-page" id="main-page"></div>
+
     <h1>💖 Hello World!</h1>
     <p>Welcome to your Electron application.</p>
   </body>
