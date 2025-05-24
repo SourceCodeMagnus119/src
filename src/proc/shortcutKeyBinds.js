@@ -1,7 +1,7 @@
-const { dialog } = require('electron');
 const { globalShortcut } = require('electron');
-const { app } = require('../index');
 const { exec } = require('child_process');
+const { dialog } = require('electron');
+const { app } = require('../index');
 
 function popupWindow_default(mainWindow) {
     dialog.showMessageBox({
