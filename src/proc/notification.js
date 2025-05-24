@@ -8,8 +8,10 @@ function showNotification() {
   const notification = new Notification({
     title: Notification_Title,
     body: Notification_Body,
-    silent: false, // Ensures the notification makes a sound
+    silent: false, // Ensures notification makes a sound
     timeoutType: 'default',
+    replyPlaceholder: true,
+    hasReply: true,
   });
   
   setTimeout(() => {
