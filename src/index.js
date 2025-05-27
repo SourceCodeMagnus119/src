@@ -2,9 +2,8 @@
  * @param Syff APP
  * @author PAUL JH GOWASEB <SourceCodeMagnus119> email: <paulusg131@gmail.com>
  */
-const { shortcutKeyBinds_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects } = require('./proc/shortcutKeyBinds');
+const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects } = require('./proc/shortcutKeyBinds');
 const { app, BrowserWindow, ipcMain } = require('electron');
-// const progressBarHandler = require('./proc/progressBar');
 const showNotification = require('./proc/notification');
 const { globalShortcut } = require('electron');
 const cluster = require('cluster');
@@ -33,11 +32,13 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     title: "SYFF",
-    // icon: "./assets/thumbnail.favicon",
+    icon: './assets/syff-app-icon.favicon.ico',
     width: 800,
     height: 600,
     frame: false,
+    kiosk: false,
     darkTheme: true,
+    vibrancy: false,
     transparent: false,
     roundedCorners: true,
     autoHideMenuBar: true,
@@ -46,6 +47,7 @@ const createWindow = () => {
     titleBarStyle: 'customButtonsOnHover',
     webPreferences: {
       nodeIntegration: true,
+      autoplayPolicy:'user-gesture-required',
       // contextIsolation: true,
       // enableRemoteModule: false,
       // sandbox: true,
@@ -56,7 +58,7 @@ const createWindow = () => {
     },
   });
 
-  shortcutKeyBinds_default(mainWindow);
+  popupWindow_default(mainWindow);
 
   app.whenReady().then(() => {
     shortcutKeyBinds_websites(mainWindow);
@@ -67,23 +69,23 @@ const createWindow = () => {
     });
 
     globalShortcut.register('Alt+Backspace', () => {
-      if (mainWindow && mainWindow.webContents.canGoBack()) {
-        mainWindow.webContents.goBack();
+      if (mainWindow && mainWindow.webContents.navigationHistory.canGoBack()) {
+        mainWindow.webContents.navigationHistory.goBack();
       }
     });
 
     globalShortcut.register('Alt+]', () => {
-      if (mainWindow && mainWindow.webContents.canGoForward()) {
-      mainWindow.webContents.goForward();
+      if (mainWindow && mainWindow.webContents.navigationHistory.canGoForward()) {
+        mainWindow.webContents.navigationHistory.goForward();
       }
     });
 
-    // if (typeof progressBarHandler === 'function') {
-    //   progressBarHandler(mainWindow);
-    // } else {
-    //   console.error('progressBarHandler is not a function or not defined properly.');
-    // }
+    globalShortcut.register('Ctrl+H', () => {
+        mainWindow.webContents.navigationHistory();
+    });
 
+    // mainWindow.setProgressBar();
+    
   }).then(showNotification);
 
   // mainWindow.webContents.openDevTools();
