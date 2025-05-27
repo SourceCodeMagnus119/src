@@ -126,4 +126,16 @@ function shortcutKeyBinds_exects(mainWindow) {
     });
 }
 
-module.exports = { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects };
+function shortcutKeyBinds_FullscreenMouseGesture(mainWindow) {
+    globalShortcut.register('Alt+Space', () => {
+        mainWindow.setFullScreen(!mainWindow.isFullScreen());
+    });
+
+    globalShortcut.register('Escape', () => {
+        if (mainWindow.isFullScreen()) {
+            mainWindow.setFullScreen(false);
+        }
+    });
+}
+
+module.exports = { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture };
