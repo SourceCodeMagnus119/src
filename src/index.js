@@ -2,10 +2,9 @@
  * @param Syff APP
  * @author PAUL JH GOWASEB <SourceCodeMagnus119> email: <paulusg131@gmail.com>
  */
-const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects } = require('./proc/shortcutKeyBinds');
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture } = require('./proc/shortcuts');
+const { app, Tray, nativeImage, BrowserWindow, ipcMain, globalShortcut } = require('electron');
 const showNotification = require('./proc/notification');
-const { globalShortcut } = require('electron');
 const cluster = require('cluster');
 const path = require('node:path');
 const os = require('os');
@@ -14,7 +13,7 @@ if(cluster.isPrimary) {
   const numCPU = os.cpus().length;
   console.log(`Master started ${process.pid}`);
 
-  for(let i = numCPU.length; i < 0; i--) {
+  for(let i = 0; i < numCPU; i++) {
     cluster.fork();
   }
 
@@ -29,10 +28,14 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+let progressInterval;
+const trayIcon = nativeImage.createFromPath('/Users/Untoasted_Raisin/Pictures/thumb-test.png');
+const appIcon = nativeImage.createFromPath('/Users/Untoasted_Raisin/Pictures/thumb-test.png');
+
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     title: "SYFF",
-    icon: './assets/syff-app-icon.favicon.ico',
+    icon: appIcon,
     width: 800,
     height: 600,
     frame: false,
@@ -45,6 +48,8 @@ const createWindow = () => {
     titleBarOverlay: false,
     visualEffectState: 'active',
     titleBarStyle: 'customButtonsOnHover',
+    sessionStorage: true,
+    statusbar: true,
     webPreferences: {
       nodeIntegration: true,
       autoplayPolicy:'user-gesture-required',
@@ -63,6 +68,7 @@ const createWindow = () => {
   app.whenReady().then(() => {
     shortcutKeyBinds_websites(mainWindow);
     shortcutKeyBinds_exects(mainWindow);
+    shortcutKeyBinds_FullscreenMouseGesture(mainWindow);
 
     globalShortcut.register('Ctrl+R', () => {
       mainWindow.reload();
@@ -79,18 +85,26 @@ const createWindow = () => {
         mainWindow.webContents.navigationHistory.goForward();
       }
     });
-
-    globalShortcut.register('Ctrl+H', () => {
-        mainWindow.webContents.navigationHistory();
-    });
-
-    // mainWindow.setProgressBar();
-    
   }).then(showNotification);
 
+  // mainWindow.loadFile('index.html');
+  mainWindow.webContents.session;
   // mainWindow.webContents.openDevTools();
-  // mainWindow.setMenu();
-  // mainWindow.setMenuBarVisibility();
+  const tray = new Tray(trayIcon);
+
+  const Increment = 0.00;
+  const IntervalDelay = 100;
+
+  let constant = 0;
+  progressInterval = setInterval(() => {
+    mainWindow.setProgressBar(constant);
+
+    if(constant < 2) {
+      constant = Increment;
+    } else {
+      constant = (-Increment * 5);
+    }
+  }, IntervalDelay);
 };
 
 app.whenReady().then(() => {
@@ -110,7 +124,9 @@ app.on('window-all-closed', () => {
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+app.on('before-quit', () => {
+  clearInterval(progressInterval)
+});
+
 
 module.exports = { app };
