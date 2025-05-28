@@ -1,10 +1,34 @@
-// See the Electron documentation for details on how to use preload scripts:
-// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
-const { ipcRender } = require("electron");
+const { contextBridge, ipcRenderer } = require('electron');
+const { pushNotifications } = require('electron/main');
 
-const NOTIFICATION_TITLE = 'MasterChief 119';
-const NOTIFICATION_BODY = 'Where is my Weapon';
-const CLICK_MESSAGE = 'All Hail MasterChief119, His power is over 9000!';
+contextBridge.exposeInMainWorld('electronAPI', {
+	saveLastVisitedUrl: (url) => ipcRenderer.send('save-last-visited-url', url),
+	PictureInPictureEvent: () => ipcRenderer.invoke('picture-in-picture'),
+	History: () => ipcRenderer.invoke('history'),
 
-// new window.Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
-// .onclick = () => { document.getElementById('output').innerText = CLICK_MESSAGE };
+	Cache: () => ipcRenderer.invoke('cache'),
+	CacheStorage: () => ipcRenderer.invoke('cache-storage'),
+	Notification: () => ipcRenderer.invoke('notification'),
+	pushNotifications: () => ipcRenderer.invoke('push-notifications'),
+
+	PerformanceNavigationTiming: () => ipcRenderer.invoke('performanceNavigationTiming'),
+	NavigationHistoryEntry: () => ipcRenderer.invoke('navigation-history-timing'),
+	PerformanceResourceTiming: () => ipcRenderer.invoke('performanceResourceTiming'),
+	
+	getLastVisitedUrl: () => ipcRenderer.invoke('get-last-visited-url')
+	,  
+		openLastVisitedUrl: async () => {
+			const url = await ipcRenderer.invoke('get-last-visited-url');
+			if (url) {
+				window.location.href = url;
+			}
+		}	
+});
+
+ipcRenderer.on('set-session-storage', (event, { key, value }) => {
+	window.sessionStorage.setItem(key, value);
+});
+
+ipcRenderer.on('clear-session-storage', () => {
+	window.sessionStorage.clear();
+});
