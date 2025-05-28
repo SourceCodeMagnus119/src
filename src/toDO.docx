@@ -1,5 +1,5 @@
 ✅ 1. Memory optimization x Multi-Core Processing.
-✅ 2. Previous Website State Save Persistance.
+✅ 2. Previous Website Navigation History.
 ~~ 3. Exit Timer for the doalogue Window.
 ~~ 4. Excess dialogue window creation bug.
 ~~ 5. TOP-CENTRE Notification popup.
@@ -11,9 +11,9 @@
 ✅ 11. Custom App Icon.
 ✅ 12. Web Security.
 13. Home Page: To Customize/edit urls/paths with the renderer for custom shortcutKeyBinds M + K.
-14: Navigation History with Alt+H and onlclick(Go to Page).
+14: History with Alt+H and onlclick(Go to Page).
 ✅ 15: Performance Timing.
 16: Picture in Picture Feature. Window event only.
-17: Optional: Launch with Last active URL/Executable.
+17: Session Management System.
 ✅ 18: Alt+Space => Fullscreen.
 ✅ 19: Desktop Installer && Command Line Installer(Choco).
