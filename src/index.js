@@ -63,6 +63,11 @@ const createWindow = () => {
     },
   });
 
+  const entries = mainWindow.webContents.navigationHistory.getAllEntries();
+  entries.forEach((entry) => {
+    console.log(`${entry.title}: ${entry.url}`);
+  });
+
   popupWindow_default(mainWindow);
 
   app.whenReady().then(() => {
@@ -87,12 +92,20 @@ const createWindow = () => {
     });
   }).then(showNotification);
 
+  const restore = async() => {
+    const entries = mainWindow.webContents.navigationHistory.getAllEntries();
+    const index = mainWindow.webContents.navigationHistory.getActiveIndex();
+
+    const secondWindow = new BrowserWindow();
+    await secondWindow.webContents.navigationHistory.restore({ index, entries });
+  }
+
   // mainWindow.loadFile('index.html');
   mainWindow.webContents.session;
   // mainWindow.webContents.openDevTools();
   const tray = new Tray(trayIcon);
 
-  const Increment = 0.00;
+  const Increment = 0.03;
   const IntervalDelay = 100;
 
   let constant = 0;
