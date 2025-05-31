@@ -104,8 +104,15 @@ const createWindow = () => {
   mainWindow.webContents.session;
   // mainWindow.webContents.openDevTools();
   const tray = new Tray(trayIcon);
+  tray.on('click', () => {
+    if (mainWindow.isMinimized()) {
+      mainWindow.restore();
+    }
+    mainWindow.show();
+    mainWindow.focus();
+  });
 
-  const Increment = 0.03;
+  const Increment = 0.01;
   const IntervalDelay = 100;
 
   let constant = 0;
