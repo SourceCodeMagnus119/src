@@ -3,7 +3,7 @@
  * @author PAUL JH GOWASEB <SourceCodeMagnus119> email: <paulusg131@gmail.com>
  */
 const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture } = require('./proc/shortcuts');
-const { app, Tray, nativeImage, BrowserWindow, ipcMain, globalShortcut } = require('electron');
+const { app, Tray, Menu, nativeImage, BrowserWindow, ipcMain, globalShortcut } = require('electron');
 const showNotification = require('./proc/notification');
 const cluster = require('cluster');
 const path = require('node:path');
@@ -103,6 +103,7 @@ const createWindow = () => {
   // mainWindow.loadFile('index.html');
   mainWindow.webContents.session;
   // mainWindow.webContents.openDevTools();
+
   const tray = new Tray(trayIcon);
   tray.on('click', () => {
     if (mainWindow.isMinimized()) {
@@ -112,6 +113,16 @@ const createWindow = () => {
     mainWindow.focus();
   });
 
+  const contextMenu = Menu.buildFromTemplate([
+    { label: 'accounts', type: 'radio' },
+    { label: 'keybinds', type: 'radio' },
+    { label: 'Websites', type: 'radio', checked: true  },
+    { label: 'settings', type: 'radio' },
+  ]);
+
+  tray.setToolTip('syff');
+  tray.contextMenu(contextMenu);
+  
   const Increment = 0.01;
   const IntervalDelay = 100;
 
