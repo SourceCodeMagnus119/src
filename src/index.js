@@ -34,41 +34,41 @@ const appIcon = nativeImage.createFromPath('/Users/Untoasted_Raisin/Pictures/thu
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
+    titleBarStyle: 'customButtonsOnHover',
+    visualEffectState: 'active',
+    titleBarOverlay: false,
+    autoHideMenuBar: true,
+    sessionStorage: true,
+    roundedCorners: true,
+    transparent: false,
+    statusbar: true,
+    vibrancy: false,
+    darkTheme: true,
     title: "SYFF",
     icon: appIcon,
-    width: 800,
-    height: 600,
-    frame: false,
     kiosk: false,
-    darkTheme: true,
-    vibrancy: false,
-    transparent: false,
-    roundedCorners: true,
-    autoHideMenuBar: true,
-    titleBarOverlay: false,
-    visualEffectState: 'active',
-    titleBarStyle: 'customButtonsOnHover',
-    sessionStorage: true,
-    statusbar: true,
+    frame: false,
+    height: 600,
+    width: 800,
     webPreferences: {
-      nodeIntegration: true,
-      autoplayPolicy:'user-gesture-required',
-      // contextIsolation: true,
-      // enableRemoteModule: false,
-      // sandbox: true,
-      session: true,
-      webSecurity: true,
-      v8CacheOptions: 'code',
       preload: path.join(__dirname, 'preload.js'),
+      autoplayPolicy:'user-gesture-required',
+      // enableRemoteModule: false,
+      // contextIsolation: true,
+      v8CacheOptions: 'code',
+      nodeIntegration: true,
+      // sandbox: true,
+      webSecurity: true,
+      session: true,
     },
   });
+
+  popupWindow_default(mainWindow);
 
   const entries = mainWindow.webContents.navigationHistory.getAllEntries();
   entries.forEach((entry) => {
     console.log(`${entry.title}: ${entry.url}`);
   });
-
-  popupWindow_default(mainWindow);
 
   app.whenReady().then(() => {
     shortcutKeyBinds_websites(mainWindow);
@@ -92,6 +92,41 @@ const createWindow = () => {
     });
   }).then(showNotification);
 
+  // mainWindow.loadFile('index.html');
+  // mainWindow.webContents.session;
+  // mainWindow.webContents.openDevTools();
+  mainWindow.once('focus', () => mainWindow.flashFrame(false))
+  mainWindow.flashFrame(true)
+
+  mainWindow.setThumbarButtons([
+      {
+        tooltip: 'Google',
+        icon: nativeImage.createFromDataURL('https://www.google.com/favicon.ico'),
+        click () { mainWindow.loadURL('http://google.com'); },
+      },
+      {
+        tooltip: 'Github',
+        icon: nativeImage.createFromDataURL('https://github.githubassets.com/favicons/favicon.svg'),
+        click () { mainWindow.loadURL('https://github.com'); }
+      },
+      {
+        tooltip: 'Youtube',
+        icon: nativeImage.createFromDataURL('https://www.youtube.com/s/desktop/6e8e7e7d/img/favicon_144x144.png'),
+        click () { mainWindow.loadURL('https://youtube.com'); }
+      },
+      {
+        tooltip: 'Pinterest',
+        icon: nativeImage.createFromDataURL('https://s.pinimg.com/webapp/favicon-96x96.png'),
+        click () { mainWindow.loadURL('https://pinterest.com'); }
+      },
+      {
+        tooltip: 'Netflix',
+        icon: nativeImage.createFromDataURL('https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png'),
+        click () { mainWindow.loadURL('https://netflix.com'); }
+      },
+  ])
+  // mainWindow.setThumbarButtons([])
+
   const restore = async() => {
     const entries = mainWindow.webContents.navigationHistory.getAllEntries();
     const index = mainWindow.webContents.navigationHistory.getActiveIndex();
@@ -99,10 +134,6 @@ const createWindow = () => {
     const secondWindow = new BrowserWindow();
     await secondWindow.webContents.navigationHistory.restore({ index, entries });
   }
-
-  // mainWindow.loadFile('index.html');
-  mainWindow.webContents.session;
-  // mainWindow.webContents.openDevTools();
 
   const tray = new Tray(trayIcon);
   tray.on('click', () => {
@@ -119,10 +150,9 @@ const createWindow = () => {
     { label: 'Websites', type: 'radio', checked: true  },
     { label: 'settings', type: 'radio' },
   ]);
-
   tray.setToolTip('syff');
-  tray.contextMenu(contextMenu);
-  
+  tray.setContextMenu(contextMenu);
+
   const Increment = 0.01;
   const IntervalDelay = 100;
 
@@ -137,6 +167,18 @@ const createWindow = () => {
     }
   }, IntervalDelay);
 };
+
+app.setUserTasks([
+  {
+    program: process.execPath,
+    arguments: '--new-window',
+    iconPath: process.execPath,
+    iconIndex:0,
+    title: 'New Window',
+    description: 'Create a new window'
+  }
+])
+// app.setUserTasks([])
 
 app.whenReady().then(() => {
   createWindow();
@@ -158,6 +200,5 @@ app.on('window-all-closed', () => {
 app.on('before-quit', () => {
   clearInterval(progressInterval)
 });
-
 
 module.exports = { app };
