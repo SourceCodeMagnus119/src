@@ -5,7 +5,7 @@ const { app } = require('../index');
 function popupWindow_default(mainWindow) {
     dialog.showMessageBox({
         type: 'question',
-        buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Pinterest', 'Cancel'],
+        buttons: ['YouTube', 'Google', 'Github', 'Netflix', 'Amazon', 'Pinterest', 'Cancel'],
         title: 'Choose Website',
         message: 'Which website would you like to visit?',
     }).then((result) => {
@@ -17,7 +17,7 @@ function popupWindow_default(mainWindow) {
                 mainWindow.loadURL("http://google.com");
                 break;
             case 2:
-                mainWindow.loadURL("http://gmail.com");
+                mainWindow.loadURL("http://github.com");
                 break;
             case 3:
                 mainWindow.loadURL("http://netflix.com");
@@ -128,12 +128,6 @@ function shortcutKeyBinds_exects(mainWindow) {
 function shortcutKeyBinds_FullscreenMouseGesture(mainWindow) {
     globalShortcut.register('Alt+Space', () => {
         mainWindow.setFullScreen(!mainWindow.isFullScreen());
-    });
-
-    globalShortcut.register('Escape', () => {
-        if (mainWindow.isFullScreen()) {
-            mainWindow.setFullScreen(false);
-        }
     });
 }
 
