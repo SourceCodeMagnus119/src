@@ -1,4 +1,5 @@
 const { app } = require('../index');
+const { execPath } = require('node:process');
 
 app.on('ready', () => {
     // app.commandLine.appendSwitch('disable-http-cache');
