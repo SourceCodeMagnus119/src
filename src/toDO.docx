@@ -18,4 +18,5 @@
 ✅ 18: Alt+Space => Fullscreen.
 ✅ 19: Desktop Installer && Command Line Installer(Choco).
 ✅ 20. Tray Icon implementation & Configuaration Menu.
-21. Task Bar JUMP_LIST x THUMBNAIL_TOOLBAR x TASKBAR_ICON_OVERLAY x FLASHFRAME.
+✅ 21. Task Bar Customization JUMP_LIST x THUMBNAIL_TOOLBAR x TASKBAR_ICON_OVERLAY x FLASHFRAME.
+22. Window Customization CUSTOM_TITLE_BAR x 
