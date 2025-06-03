@@ -131,9 +131,11 @@ const createWindow = () => {
     const entries = mainWindow.webContents.navigationHistory.getAllEntries();
     const index = mainWindow.webContents.navigationHistory.getActiveIndex();
 
-    const secondWindow = new BrowserWindow();
-    await secondWindow.webContents.navigationHistory.restore({ index, entries });
+    if (entries && entries.length > 0 && typeof index === 'number') {
+      await mainWindow.loadURL(entries[index].url);
+    }
   }
+  restore();
 
   const tray = new Tray(trayIcon);
   tray.on('click', () => {
