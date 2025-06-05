@@ -40,7 +40,7 @@ function shortcutKeyBinds_websites(mainWindow) {
     globalShortcut.register('Ctrl+M', () => {
         dialog.showMessageBox({
             type: 'question',
-            buttons: ['YouTube', 'Google', 'Gmail', 'Netflix', 'Amazon', 'Pinterest', 'Cancel'],
+            buttons: ['YouTube', 'Google', 'Github', 'Netflix', 'Amazon', 'Pinterest', 'Cancel'],
             title: 'Choose Website',
             message: 'Which website would you like to visit?',
         }).then((result) => {
@@ -52,7 +52,7 @@ function shortcutKeyBinds_websites(mainWindow) {
                     mainWindow.loadURL("http://google.com");
                     break;
                 case 2:
-                    mainWindow.loadURL("http://gmail.com");
+                    mainWindow.loadURL("http://github.com");
                     break;
                 case 3:
                     mainWindow.loadURL("http://netflix.com");
