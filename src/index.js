@@ -34,9 +34,14 @@ const appIcon = nativeImage.createFromPath('/Users/Untoasted_Raisin/Pictures/thu
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    titleBarStyle: 'customButtonsOnHover',
+    // titleBarStyle: 'hidden', ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
     visualEffectState: 'active',
-    titleBarOverlay: false,
+    // titleBarOverlay: {
+    //   color: 'darkred',
+    //   symbolColor: '#74b1be',
+    //   height: 5,
+    //   width: 5
+    // },
     autoHideMenuBar: true,
     sessionStorage: true,
     roundedCorners: true,
@@ -65,6 +70,10 @@ const createWindow = () => {
 
   popupWindow_default(mainWindow);
 
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  // mainWindow.webContents.session;
+  // mainWindow.webContents.openDevTools();
+
   const entries = mainWindow.webContents.navigationHistory.getAllEntries();
   entries.forEach((entry) => {
     console.log(`${entry.title}: ${entry.url}`);
@@ -92,9 +101,6 @@ const createWindow = () => {
     });
   }).then(showNotification);
 
-  // mainWindow.loadFile('index.html');
-  // mainWindow.webContents.session;
-  // mainWindow.webContents.openDevTools();
   mainWindow.once('focus', () => mainWindow.flashFrame(false))
   mainWindow.flashFrame(true)
 
