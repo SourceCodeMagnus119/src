@@ -60,6 +60,7 @@ const createWindow = () => {
       autoplayPolicy:'user-gesture-required',
       // enableRemoteModule: false,
       // contextIsolation: true,
+      nodeIntegrationInWorker: true,
       v8CacheOptions: 'code',
       nodeIntegration: true,
       // sandbox: true,
@@ -187,6 +188,10 @@ app.setUserTasks([
   }
 ])
 // app.setUserTasks([])
+
+app.whenReady().then(() => {
+  ipcMain.handle('ying', () => 'yang');
+})
 
 app.whenReady().then(() => {
   createWindow();
