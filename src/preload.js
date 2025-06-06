@@ -7,17 +7,11 @@ contextBridge.exposeInMainWorld('versions', {
 	electron: () => process.versions.electron,
 	ping: () => ipcRenderer.invoke('yin'),
 	// PictureInPictureEvent: () => ipcRenderer.invoke('picture-in-picture'),
+	// sesion: () => ipcRenderer.invoke('sesion');
+	// sessionStorage: () => ipcRenderer.send('set-session-storage');
 	// Cache: () => ipcRenderer.invoke('cache'),
 	// CacheStorage: () => ipcRenderer.invoke('cache-storage'),
 	// pushNotifications: () => ipcRenderer.invoke('push-notifications'),
 	// Notification: () => ipcRenderer.invoke('notification'),
 	// History: () => ipcRenderer.invoke('history'),
 });
-
-// ipcRenderer.on('set-session-storage', (event, { key, value }) => {
-// 	window.sessionStorage.setItem(key, value);
-// });
-
-// ipcRenderer.on('clear-session-storage', () => {
-// 	window.sessionStorage.clear();
-// });
