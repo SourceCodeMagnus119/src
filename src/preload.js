@@ -7,27 +7,11 @@ contextBridge.exposeInMainWorld('versions', {
 	electron: () => process.versions.electron,
 	ping: () => ipcRenderer.invoke('yin'),
 	// PictureInPictureEvent: () => ipcRenderer.invoke('picture-in-picture'),
-	
-	// saveLastVisitedUrl: (url) => ipcRenderer.send('save-last-visited-url', url),
-	// History: () => ipcRenderer.invoke('history'),
-
 	// Cache: () => ipcRenderer.invoke('cache'),
 	// CacheStorage: () => ipcRenderer.invoke('cache-storage'),
-	// Notification: () => ipcRenderer.invoke('notification'),
 	// pushNotifications: () => ipcRenderer.invoke('push-notifications'),
-
-	// PerformanceNavigationTiming: () => ipcRenderer.invoke('performanceNavigationTiming'),
-	// NavigationHistoryEntry: () => ipcRenderer.invoke('navigation-history-timing'),
-	// PerformanceResourceTiming: () => ipcRenderer.invoke('performanceResourceTiming'),
-	
-	// getLastVisitedUrl: () => ipcRenderer.invoke('get-last-visited-url')
-	// ,  
-	// 	openLastVisitedUrl: async () => {
-	// 		const url = await ipcRenderer.invoke('get-last-visited-url');
-	// 		if (url) {
-	// 			window.location.href = url;
-	// 		}
-	// 	}
+	// Notification: () => ipcRenderer.invoke('notification'),
+	// History: () => ipcRenderer.invoke('history'),
 });
 
 // ipcRenderer.on('set-session-storage', (event, { key, value }) => {

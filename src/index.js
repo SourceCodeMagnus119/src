@@ -190,7 +190,7 @@ app.setUserTasks([
 // app.setUserTasks([])
 
 app.whenReady().then(() => {
-  ipcMain.handle('ying', () => 'yang');
+  ipcMain.handle('yin', () => 'yang');
 })
 
 app.whenReady().then(() => {
