@@ -189,8 +189,41 @@ app.setUserTasks([
 ])
 // app.setUserTasks([])
 
+const dockMenu = Menu.buildFromTemplate([
+  {
+    label: 'New Window',
+    click () { console.log('Launch New Window' )}
+  },
+  {
+    label: 'Options',
+    submenu: [
+      { label: 'Basic' },
+      { label: 'Pro' },
+    ]
+  },
+  {
+    label: 'Shortcuts',
+    submenu: [
+      { label: 'Alt+Space',
+        click () { console.log('Fullscreen Activated' )}
+      },
+      { label: 'Ctrl+M',
+        click () { console.log('Popup launched') }
+      },
+      { label: 'Alt+Backspace',
+        click () { console.log('Navigate backwords') },
+      },
+      { label: 'Alt+RightBracket',
+        click () { console.log('Navigate forwards') }
+      }
+    ]
+  }
+])
+
 app.whenReady().then(() => {
   ipcMain.handle('yin', () => 'yang');
+
+  app.dock?.setMenu(dockMenu)
 })
 
 app.whenReady().then(() => {
