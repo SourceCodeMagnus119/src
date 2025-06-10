@@ -223,7 +223,7 @@ const dockMenu = Menu.buildFromTemplate([
 app.whenReady().then(() => {
   ipcMain.handle('yin', () => 'yang');
 
-  app.dock?.setMenu(dockMenu)
+  app.dock?.setMenu(dockMenu);
 })
 
 app.whenReady().then(() => {
