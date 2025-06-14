@@ -9,9 +9,9 @@ contextBridge.exposeInMainWorld('versions', {
 	PictureInPictureEvent: () => ipcRenderer.invoke('picture-in-picture'),
 	sesion: () => ipcRenderer.invoke('sesion'),
 	sessionStorage: () => ipcRenderer.send('set-session-storage'),
-	// Cache: () => ipcRenderer.invoke('cache'),
-	// CacheStorage: () => ipcRenderer.invoke('cache-storage'),
+	Cache: () => ipcRenderer.invoke('cache'),
+	CacheStorage: () => ipcRenderer.invoke('cache-storage'),
+	Notification: () => ipcRenderer.invoke('notification'),
 	// pushNotifications: () => ipcRenderer.invoke('push-notifications'),
-	// Notification: () => ipcRenderer.invoke('notification'),
 	// History: () => ipcRenderer.invoke('history'),
 });
