@@ -226,10 +226,6 @@ app.whenReady().then(() => {
   app.dock?.setMenu(dockMenu);
 })
 
-app.on('before-quit', () => {
-  clearInterval(progressInterval)
-});
-
 app.whenReady().then(() => {
   createWindow();
 
@@ -238,6 +234,10 @@ app.whenReady().then(() => {
       createWindow();
     }
   });
+});
+
+app.on('before-quit', () => {
+  clearInterval(progressInterval)
 });
 
 // explicitly with Cmd + Q.
