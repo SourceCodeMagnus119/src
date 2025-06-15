@@ -12,6 +12,6 @@ contextBridge.exposeInMainWorld('versions', {
 	Cache: () => ipcRenderer.invoke('cache'),
 	CacheStorage: () => ipcRenderer.invoke('cache-storage'),
 	Notification: () => ipcRenderer.invoke('notification'),
-	// pushNotifications: () => ipcRenderer.invoke('push-notifications'),
-	// History: () => ipcRenderer.invoke('history'),
+	pushNotifications: () => ipcRenderer.invoke('push-notifications'),
+	History: () => ipcRenderer.invoke('history'),
 });
