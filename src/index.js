@@ -226,6 +226,10 @@ app.whenReady().then(() => {
   app.dock?.setMenu(dockMenu);
 })
 
+app.on('before-quit', () => {
+  clearInterval(progressInterval)
+});
+
 app.whenReady().then(() => {
   createWindow();
 
@@ -241,10 +245,6 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
-});
-
-app.on('before-quit', () => {
-  clearInterval(progressInterval)
 });
 
 module.exports = { app };
