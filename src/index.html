@@ -4,42 +4,58 @@
     <meta charset="UTF-8" />
     <title>Hello World!</title>
     <link rel="stylesheet" href="index.css" />
-    <link rel="Syff icon" href="syff-app-icon.favicon.ico" type="image/x-icon">
+    <link rel="Syff icon" href="/Users/Untoasted_Raisin/Pictures/thumb-test.png" type="image/x-icon">
   </head>
   <body>
-    <!-- <header> -->
-      <!-- Custom Title Bar -->
-      <!-- <div class="titlebar"> -->
+    <h1>💖 Hello World!</h1>
+    <p>Welcome to your Electron application.</p>
+
+    <header>
+      Custom Title Bar
+      <div class="titlebar">
         <!-- Search Bar -->
-        <!-- <div class="search-bar"> -->
-          <!-- <input type="text" placeholder="🔍Search..." /> -->
-          <!-- <button class="search-button">🔍</button> -->
-        <!-- </div> -->
+        <div class="search-bar">
+          <input type="text" placeholder="🔍Search..." />
+          <button class="search-button">🔍</button>
+        </div>
 
         <!-- Window minimize, maximize, close -->
-        <!-- <div class="window-controls-macos-traffic-lights"> -->
-          <!-- <button class="traffic-light close" title="Close" style="background:#ff5f57;"></button> -->
-          <!-- <button class="traffic-light minimize" title="Minimize" style="background:#ffbd2e;"></button> -->
-          <!-- <button class="traffic-light maximize" title="Maximize" style="background:#28c940;"></button> -->
-        <!-- </div> -->
-      <!-- </div> -->
-    <!-- </header> -->
+        <div class="window-controls-macos-traffic-lights">
+          <button class="traffic-light close" title="Close" style="background:#ff5f57;"></button>
+          <button class="traffic-light minimize" title="Minimize" style="background:#ffbd2e;"></button>
+          <button class="traffic-light maximize" title="Maximize" style="background:#28c940;"></button>
+        </div>
+      </div>
+    </header>
 
     <!-- Side Bar  -->
-    <!-- <div class="side-bar" id="side-bar"> -->
-      <!-- <h1>SYFF</h1> -->
+    <div class="side-bar" id="side-bar">
+      <h1>SYFF</h1>
       <!-- 4 buttons (History, Customize, Profile, Settings ) with icons -->
+      <button class="sidebar-btn" title="History">
+        <span>📜</span> History
+      </button>
+      <button class="sidebar-btn" title="Customize">
+        <span>🎨</span> Customize
+      </button>
+      <button class="sidebar-btn" title="Profile">
+        <span>👤</span> Profile
+      </button>
+      <button class="sidebar-btn" title="Settings">
+        <span>⚙️</span> Settings
+      </button>
 
       <!-- Line Divider between main page and sideBar. Position: right -->
+      <hr class="sidebar-divider" style="border: none; border-right: 1px solid #ccc; height: 100%; position: absolute; right: 0; top: 0;">
 
       <!-- Footer -->
-    <!-- </div> -->
+      <footer class="sidebar-footer">
+        <small>(C) Verrsoft Inc, All rights reserved.</small>
+      </footer>
+    </div>
 
     <!-- Main Page -->
     <!-- <div class="main-page" id="main-page"></div> -->
-
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
 
     <div class="info"></div>
     <div class="yin"></div>
