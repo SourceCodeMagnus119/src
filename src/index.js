@@ -221,9 +221,16 @@ const dockMenu = Menu.buildFromTemplate([
 ])
 
 app.whenReady().then(() => {
-  ipcMain.handle('ping', () => 'yang');
-  
   app.dock?.setMenu(dockMenu);
+  
+  ipcMain.handle('ping', () => 'yang');
+  ipcMain.handle('PictureInPictureEvent', () => {
+    // Activate and deactivate picture in picture with shortcut keybind 'Ctrl+P' on video content.
+    const focusedWindow = BrowserWindow.getFocusedWindow();
+    if (focusedWindow) {
+      focusedWindow.webContents.send('toggle-picture-in-picture');
+    }
+  })
 })
 
 app.whenReady().then(() => {
