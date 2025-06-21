@@ -2,36 +2,46 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
   margin: auto;
-  max-width: 78rem;
+  max-width: 100rem;
   padding: 1rem;
   background: black;
-  color: white;
+  color: beige;
 }
 
-.titlebar {
+/* .titlebar {
   height: 30px;
-  background: blue;
+  border-radius: 10%;
+  background: lightblue;
   color: white;
   display: flex;
+  padding: 3px;
   justify-content: center;
   align-items: center;
   -webkit-app-region: drag;
-}
+} */
 
 .search-bar {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  box-sizing: border-box;
-  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .window-controls-macos-traffic-lights {
   display: flex;
-  gap: 8px;
-  align-items: center;
-  margin-left: 8px;
-  height: 100%;
+  width: 0.8rem;
+  height: 0.8rem;
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .side-bar {
