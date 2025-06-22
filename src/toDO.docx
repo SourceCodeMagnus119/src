@@ -11,6 +11,7 @@
 ✅ 11. Custom App Icon.
 ✅ 12. Web Security.
 13. Home Page: To Customize/edit urls/paths with the renderer for custom shortcutKeyBinds M + K.
+13.5 HOME_PAGE_CUSTOMIZATION(HTML) & STYLING(CSS) x BASIC_APP_HOME_PAGE_OVERLAY.
 14: Launch Recall (Restore webcontents: Undo Feature).
 ✅ 15: Performance Timing.
 16: Picture in Picture Feature. Window event only.
@@ -18,8 +19,9 @@
 ✅ 18: Alt+Space => Fullscreen.
 ✅ 19: Desktop Installer && Command Line Installer(Choco).
 ✅ 20. Tray Icon implementation & Configuaration Menu.
-✅ 21. Task Bar Customization JUMP_LIST x THUMBNAIL_TOOLBAR x TASKBAR_ICON_OVERLAY x FLASHFRAME.
+✅ 21. Task Bar Customization JUMP_LIST x THUMBNAIL_TOOLBAR x TASKBAR_ICON_OVERLAY x FLASH_FRAME.
 ✅ 22. Window Customization CUSTOM_TITLE_BAR x CUSTOM_WINDOW_INTERACTIONS x CUSTOM_WINDOW_STYLES.
 ✅ 23: INTER_PROCESS_COMMUNICATION: Render && Main process.
 ✅ 24: MacOS dock menu.
 ✅ 25. Forge Configuaration.
+26. New Window ~ Duplicate Window Feature (CTRL + N).
