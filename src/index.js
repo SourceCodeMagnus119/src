@@ -72,7 +72,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
   // mainWindow.webContents.session;
   // mainWindow.webContents.openDevTools();
-  
+
   popupWindow_default(mainWindow);
 
   const entries = mainWindow.webContents.navigationHistory.getAllEntries();
