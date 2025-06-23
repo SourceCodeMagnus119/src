@@ -75,3 +75,19 @@ body {
     width: 70%;
   }
 }
+
+.main-page {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 1.5rem;
+  position: absolute;
+  top: 7.8rem;
+
+  .main-header {
+  }
+
+  .main-content {
+  }
+}
