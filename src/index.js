@@ -2,7 +2,7 @@
  * @param Syff APP
  * @author PAUL JH GOWASEB <SourceCodeMagnus119> email: <paulusg131@gmail.com>
  */
-const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture } = require('./proc/shortcuts');
+const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture, shortcutKeyBinds_PictureInPicture } = require('./proc/shortcuts');
 const { app, Tray, Menu, nativeImage, BrowserWindow, ipcMain, globalShortcut } = require('electron');
 const showNotification = require('./proc/notification');
 const cluster = require('cluster');
@@ -225,11 +225,9 @@ app.whenReady().then(() => {
   
   ipcMain.handle('ping', () => 'yang');
   ipcMain.handle('PictureInPictureEvent', () => {
-    // Activate and deactivate picture in picture with shortcut keybind 'Ctrl+P' on video content.
+    // Activate and deactivate picture in picture with keybind shorthand 'Ctrl+P' on video content.
     const focusedWindow = BrowserWindow.getFocusedWindow();
-    if (focusedWindow) {
-      focusedWindow.webContents.send('toggle-picture-in-picture');
-    }
+    shortcutKeyBinds_PictureInPicture(focusedWindow);
   })
 })
 
