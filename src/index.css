@@ -5,7 +5,7 @@ body {
   max-width: 100rem;
   padding: 1rem;
   background: black;
-  /* background-image: image("C:/Users/Untoasted_Raisin/Downloads/adro-bmw-m4-coupee-dark-car"); */
+  /* background-image: url("C:/Users/Untoasted_Raisin/Downloads/adro-bmw-m4-coupee-dark-car.jpg"); */
   color: beige;
 }
 
@@ -124,8 +124,42 @@ body {
   top: 7.8rem;
 
   .main-header {
+    width: auto;
+    padding: 1rem;
+    background: rgba(30, 30, 30, 0.85);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    color: #f5f5dc;
   }
 
   .main-content {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(30, 30, 30, 0.85);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    color: #f5f5dc;
+    /* Add more styles as needed */
+  }
+
+  .main-content {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    min-height: 300px;
+    /* background-image: url("C:/Users/Untoasted_Raisin/Downloads/adro-bmw-m4-coupee-dark-car.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    position: relative;
+    z-index: 1;
+    /* Overlay for readability */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+
+    
   }
 }
