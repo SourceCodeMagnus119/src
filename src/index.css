@@ -5,6 +5,7 @@ body {
   max-width: 100rem;
   padding: 1rem;
   background: black;
+  background-image: image("C:/Users/Untoasted_Raisin/Downloads/adro-bmw-m4-coupee-dark-car");
   color: beige;
 }
 
@@ -27,6 +28,14 @@ body {
   gap: 0.3rem;
   border-radius: 10px;
   animation: fadeUp 1s ease;
+
+  .search {
+    border-radius: 10px;
+  }
+
+  .search-button {
+    border-radius: 10px;
+  }
 }
 
 .window-controls-macos-traffic-lights {
@@ -36,6 +45,18 @@ body {
   width: 0.8rem;
   height: 0.8rem;
   animation: fadeUp 1s ease;
+
+  .traffic-light-close {
+    border-radius: 50px;
+  }
+
+  .traffic-light-maximize {
+    border-radius: 50px;
+  }
+
+  .traffic-light-minimize {
+    border-radius: 50px;
+  }
 }
 
 @keyframes fadeUp {
@@ -66,6 +87,23 @@ body {
   width: fit-content;
   flex-direction: column;
   gap: 0.5rem;
+
+  .sidebar-btn-1,
+  .sidebar-btn-2,
+  .sidebar-btn-3,
+  .sidebar-btn-4 {
+    border-radius: 10px;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+  }
+
+  .sidebar-btn-1:hover,
+  .sidebar-btn-2:hover,
+  .sidebar-btn-3:hover,
+  .sidebar-btn-4:hover {
+    background: #444;
+    color: darkblue;
+    transform: translateY(-2px) scale(1.05);
+  }
 
   .sidebar-footer {
     position: absolute;
