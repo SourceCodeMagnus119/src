@@ -185,6 +185,22 @@ app.setUserTasks([
     iconIndex:0,
     title: 'New Window',
     description: 'Create a new window'
+  },
+  {
+    program: process.execPath,
+    arguments: '--settings',
+    iconPath: process.execPath,
+    iconIndex: 0,
+    title: 'Settings',
+    description: 'Open the settings window'
+  },
+  {
+    program: process.execPath,
+    arguments: '--help',
+    iconPath: process.execPath,
+    iconIndex: 0,
+    title: 'Help',
+    description: 'Open the help window'
   }
 ])
 // app.setUserTasks([])
