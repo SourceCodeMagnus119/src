@@ -3,11 +3,14 @@
  * @author PAUL JH GOWASEB <SourceCodeMagnus119> email: <paulusg131@gmail.com>
  */
 const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture, shortcutKeyBinds_PictureInPicture } = require('./proc/shortcuts');
-const { app, Tray, Menu, nativeImage, BrowserWindow, ipcMain, globalShortcut } = require('electron');
+const { app, Tray, Menu, nativeImage, BrowserWindow, ipcMain, globalShortcut, webContents } = require('electron');
 const showNotification = require('./proc/notification');
+const { session } = require('electron');
 const cluster = require('cluster');
 const path = require('node:path');
+const { URL } = require('url');
 const os = require('os');
+const { callbackify } = require('node:util');
 
 if(cluster.isPrimary) {
   const numCPU = os.cpus().length;
@@ -59,7 +62,7 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
       autoplayPolicy:'user-gesture-required',
       // enableRemoteModule: false,
-      // contextIsolation: true,
+      contextIsolation: true,
       nodeIntegrationInWorker: false,
       v8CacheOptions: 'code',
       nodeIntegration: false,
@@ -245,6 +248,26 @@ app.whenReady().then(() => {
     const focusedWindow = BrowserWindow.getFocusedWindow();
     shortcutKeyBinds_PictureInPicture(focusedWindow);
   })
+
+  // session.fromPartition('').setPermissionRequestHandler((webContents,permission, callback) => {
+  //   const parsedUrl = new URL(webContents.getURL())
+
+  //   if(permission === 'notifications') {
+  //     callback(true)
+  //   }
+
+  //   if(parsedUrl.protocol !== 'https:' || parsedUrl.host !== 'example.com') {
+  //     return callback(false)
+  //   }
+  // })
+
+  // session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+  //   callback({
+  //     responseHeaders: {
+  //       ...details.responseHeaders, 'Content-Security-Policy': ['default-src \'none\'']
+  //     }
+  //   })
+  // })
 })
 
 app.whenReady().then(() => {
@@ -256,6 +279,14 @@ app.whenReady().then(() => {
     }
   });
 });
+
+app.on('web-contents-created', (event, contents) => {
+  contents.on('will-attach-webview', (event, webPreferences, params) => {
+    if(!params.src.startsWith('https://example.com/')) {
+      event.preventDefault()
+    }
+  })
+})
 
 app.on('before-quit', () => {
   clearInterval(progressInterval)
