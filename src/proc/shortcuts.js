@@ -11,22 +11,22 @@ function popupWindow_default(mainWindow) {
     }).then((result) => {
         switch (result.response) {
             case 0:
-                mainWindow.loadURL("http://youtube.com");
+                mainWindow.loadURL("https://youtube.com");
                 break;
             case 1:
-                mainWindow.loadURL("http://google.com");
+                mainWindow.loadURL("https://google.com");
                 break;
             case 2:
-                mainWindow.loadURL("http://github.com");
+                mainWindow.loadURL("https://github.com");
                 break;
             case 3:
-                mainWindow.loadURL("http://netflix.com");
+                mainWindow.loadURL("https://netflix.com");
                 break;
             case 4:
-                mainWindow.loadURL("http://amazon.com");
+                mainWindow.loadURL("https://amazon.com");
                 break;
             case 5:
-                mainWindow.loadURL("http://pinterest.com");
+                mainWindow.loadURL("https://pinterest.com");
                 break;
             default:
                 console.log("No valid selection made.");
@@ -46,22 +46,22 @@ function shortcutKeyBinds_websites(mainWindow) {
         }).then((result) => {
             switch (result.response) {
                 case 0:
-                    mainWindow.loadURL("http://youtube.com");
+                    mainWindow.loadURL("https://youtube.com");
                     break;
                 case 1:
-                    mainWindow.loadURL("http://google.com");
+                    mainWindow.loadURL("https://google.com");
                     break;
                 case 2:
-                    mainWindow.loadURL("http://github.com");
+                    mainWindow.loadURL("https://github.com");
                     break;
                 case 3:
-                    mainWindow.loadURL("http://netflix.com");
+                    mainWindow.loadURL("https://netflix.com");
                     break;
                 case 4:
-                    mainWindow.loadURL("http://amazon.com");
+                    mainWindow.loadURL("https://amazon.com");
                     break;
                 case 5:
-                    mainWindow.loadURL("http://pinterest.com");
+                    mainWindow.loadURL("https://pinterest.com");
                     break;
                 default:
                     console.log("No valid selection made.");
