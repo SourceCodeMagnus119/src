@@ -84,7 +84,8 @@ body {
 
 .side-bar {
   display: inline-flex;
-  width: fit-content;
+  width: 20%;
+  height: 100%;
   flex-direction: column;
   gap: 0.5rem;
 
@@ -106,11 +107,16 @@ body {
   }
 
   .sidebar-footer {
-    position: absolute;
-    width: fit-content;
-    padding-bottom: 1%;
+    position: sticky;
     bottom: 0;
-    width: 70%;
+    width: 100%;
+    padding: 0.5rem 0;
+    background: inherit;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3rem;
   }
 }
 
@@ -135,6 +141,7 @@ body {
 
   .main-content {
     width: 100%;
+    height: 100%;
     padding: 1rem;
     background: rgba(30, 30, 30, 0.85);
     border-radius: 12px;
