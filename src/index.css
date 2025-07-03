@@ -23,6 +23,7 @@ body {
 
 .search-bar {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 0.3rem;
@@ -161,6 +162,8 @@ body {
       align-items: center;
       gap: 0.5rem;
       border-radius: 8px;
+      /* width: 2rem;
+      height: 2rem; */
       padding: 0.3rem 0.7rem;
       background: rgba(40, 40, 40, 0.7);
       color: #f5f5dc;
@@ -221,7 +224,23 @@ body {
     z-index: 1;
     /* Overlay for readability */
     box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
 
-    
+  .content-cards {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    .card-1 {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-2 {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
