@@ -225,22 +225,4 @@ body {
     /* Overlay for readability */
     box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   }
-
-  .content-cards {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-
-    .card-1 {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .card-2 {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
 }
