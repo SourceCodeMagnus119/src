@@ -5,12 +5,12 @@
 const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture, shortcutKeyBinds_PictureInPicture } = require('./proc/shortcuts');
 const { app, Tray, Menu, nativeImage, BrowserWindow, ipcMain, globalShortcut, webContents } = require('electron');
 const showNotification = require('./proc/notification');
+const { callbackify } = require('node:util');
 const { session } = require('electron');
 const cluster = require('cluster');
 const path = require('node:path');
 const { URL } = require('url');
 const os = require('os');
-const { callbackify } = require('node:util');
 
 if(cluster.isPrimary) {
   const numCPU = os.cpus().length;
