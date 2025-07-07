@@ -176,8 +176,6 @@ const createWindow = () => {
   } else {
     constant = 0;
   }
-  // progressInterval = setInterval(() => {
-  // }, IntervalDelay);
 };
 
 app.setUserTasks([
