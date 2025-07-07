@@ -169,15 +169,15 @@ const createWindow = () => {
   const IntervalDelay = 100;
 
   let constant = 0;
-  progressInterval = setInterval(() => {
-    mainWindow.setProgressBar(constant);
+  mainWindow.setProgressBar(constant);
 
-    if(constant < 2) {
-      constant = Increment;
-    } else {
-      constant = (-Increment * 5);
-    }
-  }, IntervalDelay);
+  if (constant < 2) {
+    constant += Increment;
+  } else {
+    constant = 0;
+  }
+  // progressInterval = setInterval(() => {
+  // }, IntervalDelay);
 };
 
 app.setUserTasks([
