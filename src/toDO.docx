@@ -11,7 +11,7 @@
 ✅ 11. Custom App Icon.
 ✅ 12. Web Security.
 ✅ 13. Home Page: To Customize/edit urls/paths with the renderer for custom shortcutKeyBinds M + K.
-13.5 HOME_PAGE_CUSTOMIZATION(HTML) & STYLING(CSS) x BASIC_APP_HOME_PAGE_OVERLAY.
+✅ 13.5 HOME_PAGE_CUSTOMIZATION(HTML) & STYLING(CSS) x BASIC_APP_HOME_PAGE_OVERLAY.
 14: Launch Recall (Restore webcontents: Undo Feature).
 ✅ 15: Performance Timing.
 16: Picture in Picture Feature. Window event only.
@@ -28,5 +28,5 @@
 ✅ 27. Mouse right click Support - integration.
 28. Advanced Web, App and Remote Content security (XSS, RCE protection).
 29. Permission Request Handler.
-30. Update & Migrate App from using global Shortcuts to => BEFORE-INPUT-EVENT with custom shortcuts. (EVENT_INTERCEPTOR).
+✅ 30. Update & Migrate App from using global Shortcuts to => BEFORE-INPUT-EVENT with custom shortcuts. (EVENT_INTERCEPTOR).
 ✅ 31. Taskbar invisible flashframe bug fix.
