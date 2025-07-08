@@ -83,6 +83,29 @@ body {
   align-items: center;
 }
 
+.menu-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 3px;
+  transition: background 0.3s, transform 0.3s;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.menu-img:active,
+.menu-img.clicked {
+  outline: 2px solid #f5f5dc;
+  box-shadow: 0 0 0 3px rgba(245,245,220,0.3);
+  transition: outline 0.5s, box-shadow 0.5s;
+}
+
+.menu-img:hover {
+  background: rgb(55, 57, 58);
+  /* color: darkblue; */
+  transform: translateY(-2px) scale(1.25);
+}
+
 .side-bar {
   display: inline-flex;
   width: 20%;
