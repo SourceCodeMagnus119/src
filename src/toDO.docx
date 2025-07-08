@@ -29,4 +29,4 @@
 28. Advanced Web, App and Remote Content security (XSS, RCE protection).
 29. Permission Request Handler.
 30. Update & Migrate App from using global Shortcuts to => BEFORE-INPUT-EVENT with custom shortcuts. (EVENT_INTERCEPTOR).
-31. Taskbar invisible flashframe bug fix.
+✅ 31. Taskbar invisible flashframe bug fix.
