@@ -1,7 +1,7 @@
 ✅ 1. Memory optimization x Multi-Core Processing.
 ✅ 2. Previous Website Navigation History.
 ~~ 3. Exit Timer for the doalogue Window.
-~~ 4. Excess dialogue window creation bug.
+✅ 4. Excess dialogue window creation bug(Fixed by migrating from global shortcuts to `before-input-event` BrowserWindow Event).
 ~~ 5. TOP-CENTRE Notification popup.
 ✅ 6. Local Dektop Executables(Games, Photo-Editor, Photos, Movies&TV).
 ✅ 7. Notifcation System (Display-Only && Interactive);
@@ -25,6 +25,8 @@
 ✅ 24: MacOS dock menu.
 ✅ 25. Forge Configuaration.
 26. New Window ~ Duplicate Window Feature (CTRL + N).
-27. Mouse right click Support integration.
+✅ 27. Mouse right click Support - integration.
 28. Advanced Web, App and Remote Content security (XSS, RCE protection).
 29. Permission Request Handler.
+30. Update & Migrate App from using global Shortcuts to => BEFORE-INPUT-EVENT with custom shortcuts. (EVENT_INTERCEPTOR).
+31. Taskbar invisible flashframe bug fix.
