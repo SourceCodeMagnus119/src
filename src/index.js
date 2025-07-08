@@ -73,6 +73,34 @@ const createWindow = () => {
   });
 
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.webContents.on('before-input-event', (event, input) => {
+    // Custom input event handler with custom shortcuts.
+    if(input.control && input.key.toLowerCase() === 'm') {
+      event.preventDefault();
+
+      shortcutKeyBinds_websites(mainWindow);
+    }
+    if(input.control && input.key.toLowerCase() === 'k') {
+      event.preventDefault();
+
+      shortcutKeyBinds_exects();
+    }
+    if(input.control && input.key.toLowerCase() === ' ') {
+      event.preventDefault();
+
+      if (mainWindow.isFullScreen()) {
+      mainWindow.setFullScreen(false);
+      } else {
+      mainWindow.setFullScreen(true);
+      }
+    }
+    if(input.control && input.shift && input.key.toLowerCase() === 'p') {
+      console.log('Shortcut CTRL+SHIFT+P Triggered!')
+      event.preventDefault();
+      
+      shortcutKeyBinds_PictureInPicture();
+    }
+  })
   // mainWindow.webContents.session;
   // mainWindow.webContents.openDevTools();
 
@@ -84,9 +112,9 @@ const createWindow = () => {
   });
 
   app.whenReady().then(() => {
-    shortcutKeyBinds_websites(mainWindow);
-    shortcutKeyBinds_exects(mainWindow);
-    shortcutKeyBinds_FullscreenMouseGesture(mainWindow);
+    // shortcutKeyBinds_websites(mainWindow);
+    // shortcutKeyBinds_exects(mainWindow);
+    // shortcutKeyBinds_FullscreenMouseGesture(mainWindow);
 
     globalShortcut.register('Ctrl+R', () => {
       mainWindow.reload();
@@ -105,8 +133,8 @@ const createWindow = () => {
     });
   }).then(showNotification);
 
-  mainWindow.once('focus', () => mainWindow.flashFrame(false))
-  mainWindow.flashFrame(true)
+  mainWindow.once('focus', () => mainWindow.flashFrame(true))
+  mainWindow.flashFrame(false)
 
   mainWindow.setThumbarButtons([
       {
