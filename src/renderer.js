@@ -45,7 +45,3 @@ window.addEventListener('contextmenu', (event) => {
     }, { once: true });
     console.log('Right click detected!');
 });
-
-/**
- * @param {CUSTOM LOCAL_KEYBINDS}
- */
