@@ -100,8 +100,22 @@ const createWindow = () => {
       
       shortcutKeyBinds_PictureInPicture();
     }
+    if(input.control && input.key.toLowerCase() === 'r') {
+      mainWindow.reload();
+    }
+    if(input.alt && input.key.toLowerCase() === 'backspace') {
+      if (mainWindow && mainWindow.webContents.navigationHistory.canGoBack()) {
+        mainWindow.webContents.navigationHistory.goBack();
+      }
+    }
+    if(input.alt && input.key === ']') {
+      if (mainWindow && mainWindow.webContents.navigationHistory.canGoForward()) {
+        mainWindow.webContents.navigationHistory.goForward();
+      }
+    }
   })
   // mainWindow.webContents.session;
+  // mainWindow.webContents.v8CacheOptions()
   // mainWindow.webContents.openDevTools();
 
   popupWindow_default(mainWindow);
@@ -115,22 +129,6 @@ const createWindow = () => {
     // shortcutKeyBinds_websites(mainWindow);
     // shortcutKeyBinds_exects(mainWindow);
     // shortcutKeyBinds_FullscreenMouseGesture(mainWindow);
-
-    globalShortcut.register('Ctrl+R', () => {
-      mainWindow.reload();
-    });
-
-    globalShortcut.register('Alt+Backspace', () => {
-      if (mainWindow && mainWindow.webContents.navigationHistory.canGoBack()) {
-        mainWindow.webContents.navigationHistory.goBack();
-      }
-    });
-
-    globalShortcut.register('Alt+]', () => {
-      if (mainWindow && mainWindow.webContents.navigationHistory.canGoForward()) {
-        mainWindow.webContents.navigationHistory.goForward();
-      }
-    });
   }).then(showNotification);
 
   mainWindow.once('focus', () => mainWindow.flashFrame(true))
