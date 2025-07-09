@@ -161,7 +161,7 @@ body {
   flex-direction: column;
   padding: 1.5rem;
   position: absolute;
-  top: 7.8rem;
+  /* top: 7.8rem; */
 
   .main-header {
     width: auto;
