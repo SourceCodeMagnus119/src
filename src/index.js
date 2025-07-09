@@ -116,14 +116,23 @@ const createWindow = () => {
   })
   // mainWindow.webContents.session;
   // mainWindow.webContents.v8CacheOptions()
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   popupWindow_default(mainWindow);
 
-  const entries = mainWindow.webContents.navigationHistory.getAllEntries();
-  entries.forEach((entry) => {
-    console.log(`${entry.title}: ${entry.url}`);
-  });
+  if (
+    mainWindow.webContents.navigationHistory &&
+    typeof mainWindow.webContents.navigationHistory.getAllEntries === 'function'
+  ) {
+    const entries = mainWindow.webContents.navigationHistory.getAllEntries();
+    if (Array.isArray(entries)) {
+      entries.forEach((entry) => {
+        if (entry && typeof entry.title === 'string' && typeof entry.url === 'string') {
+          console.log(`${entry.title}: ${entry.url}`);
+        }
+      });
+    }
+  }
 
   app.whenReady().then(() => {
     // shortcutKeyBinds_websites(mainWindow);
