@@ -64,7 +64,7 @@ const createWindow = () => {
       // enableRemoteModule: false,
       contextIsolation: true,
       nodeIntegrationInWorker: false,
-      v8CacheOptions: 'code',
+      v8CacheOptions: 'bypassHeatCheck',
       nodeIntegration: false,
       // sandbox: true,
       webSecurity: true,
@@ -114,9 +114,10 @@ const createWindow = () => {
       }
     }
   })
+  mainWindow.setProgressBar(0, 10);
   // mainWindow.webContents.session;
   // mainWindow.webContents.v8CacheOptions()
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   popupWindow_default(mainWindow);
 
