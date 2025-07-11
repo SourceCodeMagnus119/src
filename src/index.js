@@ -113,8 +113,19 @@ const createWindow = () => {
         mainWindow.webContents.navigationHistory.goForward();
       }
     }
+    if(input.control && input.key.toLowerCase() === 'n') {
+      // Launch a new duplicate window from the active mainWindow
+      const duplicateWindow = new BrowserWindow({
+        height: mainWindow.getBounds().height,
+        width: mainWindow.getBounds().width,
+        x: mainWindow.getBounds().x + 30,
+        y: mainWindow.getBounds().y + 30,
+        webPreferences: mainWindow.webContents.getLastWebPreferences()
+      });
+      duplicateWindow.loadURL(mainWindow.webContents.getURL());
+    }
   })
-  mainWindow.setProgressBar(0, 10);
+  mainWindow.setProgressBar(0, 100);
   // mainWindow.webContents.session;
   // mainWindow.webContents.v8CacheOptions()
   // mainWindow.webContents.openDevTools();
