@@ -24,7 +24,7 @@
 ✅ 23: INTER_PROCESS_COMMUNICATION: Render && Main process.
 ✅ 24: MacOS dock menu.
 ✅ 25. Forge Configuaration.
-26. New Window ~ Duplicate Window Feature (CTRL + N).
+✅ 26. New Window ~ Duplicate Window Feature Support (CTRL + N).
 ✅ 27. Mouse right click Support - integration.
 28. Advanced Web, App and Remote Content security (XSS, RCE protection).
 29. Permission Request Handler.
