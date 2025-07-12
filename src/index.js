@@ -3,7 +3,7 @@
  * @author PAUL JH GOWASEB <SourceCodeMagnus119> email: <paulusg131@gmail.com>
  */
 const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture, shortcutKeyBinds_PictureInPicture } = require('./proc/shortcuts');
-const { app, Tray, Menu, nativeImage, BrowserWindow, ipcMain, globalShortcut, webContents } = require('electron');
+const { app, Tray, Menu, nativeImage, BrowserWindow, ipcMain, globalShortcut, webContents, shell } = require('electron');
 const showNotification = require('./proc/notification');
 const { callbackify } = require('node:util');
 const { session } = require('electron');
@@ -291,7 +291,7 @@ app.whenReady().then(() => {
   ipcMain.handle('PictureInPictureEvent', () => {
     // Activate and deactivate picture in picture with keybind shorthand 'Ctrl+P' on video content.
     const focusedWindow = BrowserWindow.getFocusedWindow();
-    shortcutKeyBinds_PictureInPicture(focusedWindow);
+    // shortcutKeyBinds_PictureInPicture(focusedWindow);
   })
 
   // session.fromPartition('').setPermissionRequestHandler((webContents,permission, callback) => {
@@ -343,5 +343,15 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
+
+// shell.openExternal('https://google.com');
+// const shortcutPath = path.join(os.homedir(), 'Desktop', 'SYFF.lnk');
+// shell.writeShortcutLink(shortcutPath, {
+//   target: process.execPath,
+//   args: '',
+//   description: 'SYFF Desktop Shortcut',
+//   icon: process.execPath,
+//   iconIndex: 0
+// });
 
 module.exports = { app };
