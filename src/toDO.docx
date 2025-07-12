@@ -31,3 +31,4 @@
 ✅ 30. Update & Migrate App from using global Shortcuts to => BEFORE-INPUT-EVENT with custom shortcuts. (EVENT_INTERCEPTOR).
 ✅ 31. Taskbar invisible flashframe bug fix.
 32. Cache Management System.
+33. Bash Shell: EXTERNAL_ACTIVATION.
