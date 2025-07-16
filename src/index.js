@@ -127,8 +127,6 @@ const createWindow = () => {
     }
   })
   mainWindow.setProgressBar(0, 100);
-  // mainWindow.webContents.session;
-  // mainWindow.webContents.v8CacheOptions()
   // mainWindow.webContents.openDevTools();
 
   popupWindow_default(mainWindow);
@@ -148,8 +146,6 @@ const createWindow = () => {
   }
 
   app.whenReady().then(() => {
-    // shortcutKeyBinds_websites(mainWindow);
-    // shortcutKeyBinds_exects(mainWindow);
     // shortcutKeyBinds_FullscreenMouseGesture(mainWindow);
   }).then(showNotification);
 
