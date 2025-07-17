@@ -33,6 +33,31 @@ window.addEventListener('contextmenu', (event) => {
         if (e.target.id === 'custom-menu-item') {
             alert('Custom menu item clicked!');
         }
+        if (e.target.id === 'Cut') {
+            const selection = window.getSelection();
+            if (selection && selection.toString()) {
+                navigator.clipboard.writeText(selection.toString());
+                const range = selection.getRangeAt(0);
+                range.deleteContents();
+                alert('Content Cut');
+            }
+        }
+        if (e.target.id === 'Copy') {
+            const selection = window.getSelection();
+            if (selection && selection.toString()) {
+                navigator.clipboard.writeText(selection.toString());
+                alert('Content Copied');
+            }
+            if (e.target.id === 'Paste') {
+                navigator.clipboard.readText().then(text => {
+                    const selection = window.getSelection();
+                    if (selection && selection.rangeCount > 0) {
+                        selection.deleteFromDocument();
+                        selection.getRangeAt(0).insertNode(document.createTextNode(text));
+                    }
+                });
+            }
+        }
         menu.remove();
     });
 
