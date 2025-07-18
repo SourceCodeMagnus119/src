@@ -286,7 +286,6 @@ app.whenReady().then(() => {
   
   ipcMain.handle('ping', () => 'yang');
   ipcMain.handle('PictureInPictureEvent', () => {
-    // Activate and deactivate picture in picture with keybind shorthand 'Ctrl+P' on video content.
     const focusedWindow = BrowserWindow.getFocusedWindow();
     // shortcutKeyBinds_PictureInPicture(focusedWindow);
   })
@@ -341,7 +340,6 @@ app.on('window-all-closed', () => {
   }
 });
 
-// shell.openExternal('https://google.com');
 // const shortcutPath = path.join(os.homedir(), 'Desktop', 'SYFF.lnk');
 // shell.writeShortcutLink(shortcutPath, {
 //   target: process.execPath,
