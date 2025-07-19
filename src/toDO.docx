@@ -25,7 +25,7 @@
 ✅ 24: MacOS dock menu.
 ✅ 25. Forge Configuaration.
 ✅ 26. New Window ~ Duplicate Window Feature Support (CTRL + N).
-✅ 27. Mouse right click Support - integration.
+✅ 27. Home page Mouse right click Support - integration.
 28. Advanced Web, App and Remote Content security (XSS, RCE protection).
 29. Permission Request Handler.
 ✅ 30. Update & Migrate App from using global Shortcuts to => BEFORE-INPUT-EVENT with custom shortcuts. (EVENT_INTERCEPTOR).
