@@ -29,34 +29,20 @@ window.addEventListener('contextmenu', (event) => {
     document.querySelectorAll('.custom-context-menu').forEach(el => el.remove());
     menu.classList.add('custom-context-menu');
 
+    // Add custom menu items
+    menu.innerHTML = `
+        <div id="custom-menu-copy" style="padding:4px;cursor:pointer;">Copy</div>
+        <div id="custom-menu-paste" style="padding:4px;cursor:pointer;">Paste</div>
+        <div id="custom-menu-item" style="padding:4px;cursor:pointer;">Custom Menu Item</div>
+    `;
+
     menu.addEventListener('click', (e) => {
-        if (e.target.id === 'custom-menu-item') {
+        if (e.target.id === 'custom-menu-copy') {
+            document.execCommand('copy');
+        } else if (e.target.id === 'custom-menu-paste') {
+            document.execCommand('paste');
+        } else if (e.target.id === 'custom-menu-item') {
             alert('Custom menu item clicked!');
-        }
-        if (e.target.id === 'Cut') {
-            const selection = window.getSelection();
-            if (selection && selection.toString()) {
-                navigator.clipboard.writeText(selection.toString());
-                const range = selection.getRangeAt(0);
-                range.deleteContents();
-                alert('Content Cut');
-            }
-        }
-        if (e.target.id === 'Copy') {
-            const selection = window.getSelection();
-            if (selection && selection.toString()) {
-                navigator.clipboard.writeText(selection.toString());
-                alert('Content Copied');
-            }
-            if (e.target.id === 'Paste') {
-                navigator.clipboard.readText().then(text => {
-                    const selection = window.getSelection();
-                    if (selection && selection.rangeCount > 0) {
-                        selection.deleteFromDocument();
-                        selection.getRangeAt(0).insertNode(document.createTextNode(text));
-                    }
-                });
-            }
         }
         menu.remove();
     });
