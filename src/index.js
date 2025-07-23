@@ -89,9 +89,9 @@ const createWindow = () => {
       event.preventDefault();
 
       if (mainWindow.isFullScreen()) {
-      mainWindow.setFullScreen(false);
+        mainWindow.setFullScreen(false);
       } else {
-      mainWindow.setFullScreen(true);
+        mainWindow.setFullScreen(true);
       }
     }
     if(input.control && input.shift && input.key.toLowerCase() === 'p') {
@@ -114,7 +114,6 @@ const createWindow = () => {
       }
     }
     if(input.control && input.key.toLowerCase() === 'n') {
-      // Launch a new duplicate window from the active mainWindow
       const duplicateWindow = new BrowserWindow({
         frame: false,
         height: mainWindow.getBounds().height,
