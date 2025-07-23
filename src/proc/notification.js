@@ -1,23 +1,28 @@
 const { Notification } = require('electron');
 const { app } = require('../index');
 
-const Notification_Title = 'Test-Notification';
-const Notification_Body = 'Test Notification from the main process.';
-
 function showNotification() {  
+  const Notification_Title = 'Test-Notification';
+  const Notification_Body = 'Test Notification from the main process.';
+
   const notification = new Notification({
     title: Notification_Title,
     body: Notification_Body,
     silent: false, // Ensures notification makes a sound
     timeoutType: 'default',
-    replyPlaceholder: true,
     hasReply: true,
+    replyPlaceholder: 'Type your reply here...',
+    icon: '/Users/Untoasted_Raisin/Pictures/thumb-test.png',
+    sound: '/Windows/Media/Windows Notify Calendar.wav',
+    actions: [
+      { type: 'button', text: 'OK' },
+      { type: 'button', text: 'Cancel' }
+    ]
   });
   
   setTimeout(() => {
     notification.show();
-    // notification.sound();
-  }, 2000);
+  }, 3000);
 };
 
 module.exports = showNotification;
