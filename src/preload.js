@@ -14,4 +14,8 @@ contextBridge.exposeInMainWorld('SyffAPI', {
 	Cache: () => ipcRenderer.invoke('cache'),
 	CacheStorage: () => ipcRenderer.invoke('cache-storage'),
 	History: () => ipcRenderer.invoke('history'),
+
+	IpLock: () => ipcRenderer.invoke('ip-lock', () => {
+		console.log('Test run #1: Ip-lock-system-registering')
+	})
 });
