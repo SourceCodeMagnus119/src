@@ -290,25 +290,29 @@ app.whenReady().then(() => {
     // shortcutKeyBinds_PictureInPicture(focusedWindow);
   })
 
-  // session.fromPartition('').setPermissionRequestHandler((webContents,permission, callback) => {
-  //   const parsedUrl = new URL(webContents.getURL())
+  // session.fromPartition('').setPermissionRequestHandler((webContents, permission, callback) => {
+  //   const parsedUrl = new URL(webContents.getURL());
 
-  //   if(permission === 'notifications') {
-  //     callback(true)
+  //   if (permission === 'notifications') {
+  //     return callback(true);
   //   }
 
-  //   if(parsedUrl.protocol !== 'https:' || parsedUrl.host !== 'example.com') {
-  //     return callback(false)
+  //   if (parsedUrl.protocol !== 'https:' || parsedUrl.host !== 'example.com') {
+  //     return callback(false);
   //   }
-  // })
 
+  //   callback(true);
+  // });
+
+  // // Adjust the Content Security Policy to allow styles and scripts as needed.
   // session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
   //   callback({
   //     responseHeaders: {
-  //       ...details.responseHeaders, 'Content-Security-Policy': ['default-src \'none\'']
+  //       ...details.responseHeaders,
+  //       'Content-Security-Policy': ["default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'"]
   //     }
-  //   })
-  // })
+  //   });
+  // });
 })
 
 app.whenReady().then(() => {
