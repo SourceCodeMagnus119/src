@@ -283,7 +283,12 @@ const dockMenu = Menu.buildFromTemplate([
 app.whenReady().then(() => {
   app.dock?.setMenu(dockMenu);
   
-  ipcMain.handle('ping', () => 'yang');
+  ipcMain.handle('ping', () => {
+    console.log('yang')
+  });
+  ipcMain.handle('ipLock', () => {
+    console.alert('OHH! YEAHH!')
+  })
   ipcMain.handle('PictureInPictureEvent', () => {
     const focusedWindow = BrowserWindow.getFocusedWindow();
     // shortcutKeyBinds_PictureInPicture(focusedWindow);
