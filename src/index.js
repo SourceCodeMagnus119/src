@@ -286,7 +286,7 @@ app.whenReady().then(() => {
   ipcMain.handle('ping', () => {
     console.log('yang')
   });
-  ipcMain.handle('ipLock', () => {
+  ipcMain.handle('IpLock', () => {
     console.alert('OHH! YEAHH!')
   })
   ipcMain.handle('PictureInPictureEvent', () => {
