@@ -37,7 +37,7 @@ const appIcon = nativeImage.createFromPath('/Users/Untoasted_Raisin/Pictures/thu
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    // titleBarStyle: 'hidden', ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
+    titleBarStyle: 'hidden', ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
     visualEffectState: 'active',
     // titleBarOverlay: {
     //   color: 'darkred',
@@ -115,6 +115,7 @@ const createWindow = () => {
     }
     if(input.control && input.key.toLowerCase() === 'n') {
       const duplicateWindow = new BrowserWindow({
+        titleBarStyle: 'hidden', ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
         frame: false,
         height: mainWindow.getBounds().height,
         width: mainWindow.getBounds().width,
