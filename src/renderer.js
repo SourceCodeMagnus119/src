@@ -2,11 +2,11 @@
 // information.innerText = `This app is using chrome (v${version.chrome()})`
 // console.log(information);
 
-const ipLock = async() => {
-    const ipLock = await window.SyffAPI.IpLock()
-    console.log(ipLock)
+const ipAppLock = async() => {
+    const ipLock = await window.SyffAPI.IpLock();
+    console.log(ipLock);
 }
-ipLock()
+ipAppLock();
 
 async function yinYang() {
     const response = await window.SyffAPI.ping();
