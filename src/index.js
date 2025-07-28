@@ -108,7 +108,7 @@ const createWindow = () => {
         mainWindow.webContents.navigationHistory.goBack();
       }
     }
-    if(input.alt && input.key === ']') {
+    if(input.control && input.key === ']') {
       if (mainWindow && mainWindow.webContents.navigationHistory.canGoForward()) {
         mainWindow.webContents.navigationHistory.goForward();
       }
