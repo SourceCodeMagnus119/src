@@ -1,7 +1,3 @@
-// const information = document.getElementById('info');
-// information.innerText = `This app is using chrome (v${version.chrome()})`
-// console.log(information);
-
 const ipAppLock = async() => {
     const ipLock = await window.SyffAPI.IpLock();
     console.log(ipLock);
