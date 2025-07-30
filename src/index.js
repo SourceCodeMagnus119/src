@@ -11,6 +11,7 @@ const cluster = require('cluster');
 const path = require('node:path');
 const { URL } = require('url');
 const os = require('os');
+const { Cipher } = require('node:crypto');
 
 if(cluster.isPrimary) {
   const numCPU = os.cpus().length;
@@ -38,7 +39,7 @@ const appIcon = nativeImage.createFromPath('/Users/Untoasted_Raisin/Pictures/thu
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     titleBarStyle: 'hidden', ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
-    visualEffectState: 'active',
+    visualEffectState: 'followWindow',
     // titleBarOverlay: {
     //   color: 'darkred',
     //   symbolColor: '#74b1be',
