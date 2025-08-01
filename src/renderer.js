@@ -1,14 +1,14 @@
+// async function yinYang() {
+//     const response = await window.SyffAPI.ping();
+//     console.log(`This is the result of the two-way IPC massage from the renderer process: ${response}`)
+// }
+// yinYang();
+
 const ipAppLock = async() => {
-    const ipLock = await window.SyffAPI.IpLock();
+    const ipLock = await Window.SyffAPI.IpLock();
     console.log(ipLock);
 }
 ipAppLock();
-
-async function yinYang() {
-    const response = await window.SyffAPI.ping();
-    console.log(`This is the result of the two-way IPC massage from the renderer process: ${response}`)
-}
-yinYang();
 
 /**
  * @param {RIGHT CLICK SUPPORT}
