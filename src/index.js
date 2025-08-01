@@ -60,7 +60,7 @@ const createWindow = () => {
     height: 600,
     width: 800,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: path.join('./preload.js'),
       autoplayPolicy:'user-gesture-required',
       // enableRemoteModule: false,
       contextIsolation: true,
@@ -289,7 +289,7 @@ app.whenReady().then(() => {
     console.log('yang')
   });
   ipcMain.handle('IpLock', () => {
-    console.alert('OHH! YEAHH!')
+    console.log('OHH! YEAHH!')
   })
   ipcMain.handle('PictureInPictureEvent', () => {
     const focusedWindow = BrowserWindow.getFocusedWindow();
