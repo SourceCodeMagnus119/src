@@ -73,6 +73,22 @@ const createWindow = () => {
     },
   });
 
+  // mainWindow.setTitleBarOverlay('Menu', (event, input, Menu) => {
+  //   Menu.buildFromTemplate([
+  //     {
+  //       label: "Menu",
+  //       click () {}
+  //     },
+  //     {
+  //       label: "options",
+  //       submenu: {
+  //         { label: "shortcuts" },          
+  //         { label: "help" },          
+  //         { label: "snapshot" },          
+  //       }
+  //     }
+  //   ]);
+  // })
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
   mainWindow.webContents.on('before-input-event', (event, input) => {
     // Custom input event handler with custom shortcuts.
