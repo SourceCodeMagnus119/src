@@ -1,15 +1,3 @@
-// async function yinYang() {
-//     const response = await window.SyffAPI.ping();
-//     console.log(`This is the result of the two-way IPC massage from the renderer process: ${response}`)
-// }
-// yinYang();
-
-const ipAppLock = async() => {
-    const ipLock = await Window.SyffAPI.IpLock();
-    console.log(ipLock);
-}
-ipAppLock();
-
 /**
  * @param {RIGHT CLICK SUPPORT}
  */
@@ -58,3 +46,15 @@ window.addEventListener('contextmenu', (event) => {
     }, { once: true });
     console.log('Right click detected!');
 });
+
+// async function yinYang() {
+//     const response = await window.SyffAPI.ping();
+//     console.log(`This is the result of the two-way IPC massage from the renderer process: ${response}`)
+// }
+// yinYang();
+
+const ipAppLock = async() => {
+    const ipLock = await Window.SyffAPI.IpLock();
+    console.log(ipLock);
+}
+ipAppLock();
