@@ -5,13 +5,11 @@
 const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture, shortcutKeyBinds_PictureInPicture } = require('./proc/shortcuts');
 const { app, Tray, Menu, nativeImage, BrowserWindow, ipcMain, globalShortcut, webContents, shell } = require('electron');
 const showNotification = require('./proc/notification');
-const { callbackify } = require('node:util');
 const { session } = require('electron');
 const cluster = require('cluster');
 const path = require('node:path');
 const { URL } = require('url');
 const os = require('os');
-const { Cipher } = require('node:crypto');
 
 if(cluster.isPrimary) {
   const numCPU = os.cpus().length;
@@ -292,9 +290,6 @@ app.whenReady().then(() => {
   ipcMain.on('perform-custom-action', (event) => {
     console.log('Custom-button-Clicked')
 
-    /**
-     * @param {CUSTOM_DROP-DOWN-MENU}
-     */
     Menu.buildFromTemplate([
       {
         label: "Menu",
@@ -322,21 +317,21 @@ app.whenReady().then(() => {
     // shortcutKeyBinds_PictureInPicture(focusedWindow);
   })
 
-  // session.fromPartition('').setPermissionRequestHandler((webContents, permission, callback) => {
-  //   const parsedUrl = new URL(webContents.getURL());
+  session.fromPartition('').setPermissionRequestHandler((webContents, permission, callback) => {
+    const parsedUrl = new URL(webContents.getURL());
 
-  //   if (permission === 'notifications') {
-  //     return callback(true);
-  //   }
+    if (permission === 'notifications') {
+      return callback(true);
+    }
 
-  //   if (parsedUrl.protocol !== 'https:' || parsedUrl.host !== 'example.com') {
-  //     return callback(false);
-  //   }
+    if (parsedUrl.protocol !== 'https:' || parsedUrl.host !== 'https://example.com') {
+      return callback(false);
+    }
 
-  //   callback(true);
-  // });
+    callback(true);
+  });
 
-  // // Adjust the Content Security Policy to allow styles and scripts as needed.
+  // Adjust the Content Security Policy to allow styles and scripts as needed.
   // session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
   //   callback({
   //     responseHeaders: {
