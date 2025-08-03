@@ -1,3 +1,5 @@
+const { ipcRenderer } = require("electron");
+
 /**
  * @param {RIGHT CLICK SUPPORT}
  */
@@ -46,6 +48,19 @@ window.addEventListener('contextmenu', (event) => {
     }, { once: true });
     console.log('Right click detected!');
 });
+
+/**
+ * @param {CUSTOM_TITLE_BAR}
+ */
+window.addEventListener('DOMContentLoaded', () => {
+    const customActionButton = document.getElementById('more')
+
+    if(customActionButton) {
+        customActionButton.addEventListener('click', () => {
+            ipcRenderer.send('perform-custom-action')
+        })
+    }
+})
 
 // async function yinYang() {
 //     const response = await window.SyffAPI.ping();
