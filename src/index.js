@@ -73,22 +73,6 @@ const createWindow = () => {
     },
   });
 
-  // mainWindow.setTitleBarOverlay('Menu', (event, input, Menu) => {
-  //   Menu.buildFromTemplate([
-  //     {
-  //       label: "Menu",
-  //       click () {}
-  //     },
-  //     {
-  //       label: "options",
-  //       submenu: {
-  //         { label: "shortcuts" },          
-  //         { label: "help" },          
-  //         { label: "snapshot" },          
-  //       }
-  //     }
-  //   ]);
-  // })
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
   mainWindow.webContents.on('before-input-event', (event, input) => {
     // Custom input event handler with custom shortcuts.
@@ -300,14 +284,40 @@ const dockMenu = Menu.buildFromTemplate([
 
 app.whenReady().then(() => {
   app.dock?.setMenu(dockMenu);
+})
+
+app.whenReady().then(() => {
+  createWindow();
+
+  ipcMain.on('perform-custom-action', (event) => {
+    console.log('Custom-button-Clicked')
+
+    /**
+     * @param {CUSTOM_DROP-DOWN-MENU}
+     */
+    Menu.buildFromTemplate([
+      {
+        label: "Menu",
+        click () {}
+      },
+      {
+        label: "options",
+        submenu: [
+          { label: "shortcuts" },          
+          { label: "help" },          
+          { label: "snapshot" },          
+        ]
+      }
+    ]);
+  })
   
-  ipcMain.handle('ping', () => {
+  ipcMain.on('ping', (event) => {
     console.log('yang')
   });
-  ipcMain.handle('IpLock', () => {
+  ipcMain.on('IpLock', (event) => {
     console.log('OHH! YEAHH!')
   })
-  ipcMain.handle('PictureInPictureEvent', () => {
+  ipcMain.handle('PictureInPictureEvent', (event) => {
     const focusedWindow = BrowserWindow.getFocusedWindow();
     // shortcutKeyBinds_PictureInPicture(focusedWindow);
   })
@@ -335,11 +345,7 @@ app.whenReady().then(() => {
   //     }
   //   });
   // });
-})
-
-app.whenReady().then(() => {
-  createWindow();
-
+  
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
