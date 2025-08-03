@@ -35,4 +35,5 @@
 34. Request Handler x Session Management System - HOME_PAGE_STYLING_BUG.
 35. IP_APP_LOCK - LOCK APP NETWORK ACCESS TO IP_ADDRESS ONLY.
 36. RENDERER_FEATURE: ADD_CUSTOM_LINKS_CREATION_TO_DIALOGUE_WINDOW.
-39. Toolbar Jumplist Button: Website shortcuts.
+39. Custom Toolbar Jumplist(DROP_DOWN_MENU) Button: Website shortcuts.
+40. NGINX: SERVING AS A LOAD-BALANCER. To handle website-bouncing && application launching as fast as possible with as low resources as possible. (implementation-Wise THIS MEANS I HAVE TO FIND OR CREATE MY OWN WAY OF ALLOWING THE RENDERER_PROCESS AND MAIN_PROCESS TO INTERACT WITH NGINX_PROXY BEFORE THE IPC-CYCLE IS COMPLETE.)
