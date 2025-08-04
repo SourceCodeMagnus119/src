@@ -4,6 +4,7 @@
  */
 const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture, shortcutKeyBinds_PictureInPicture } = require('./proc/shortcuts');
 const { app, Tray, Menu, nativeImage, BrowserWindow, ipcMain, globalShortcut, webContents, shell } = require('electron');
+const { ShareMenu, inAppPurchase, pushNotifications, safeStorage } = require("electron");
 const showNotification = require('./proc/notification');
 const { session } = require('electron');
 const cluster = require('cluster');
@@ -305,7 +306,6 @@ app.whenReady().then(() => {
       }
     ]);
   })
-  
   ipcMain.on('ping', (event) => {
     console.log('yang')
   });
@@ -340,6 +340,81 @@ app.whenReady().then(() => {
   //     }
   //   });
   // });
+
+  const storageSystem = async(app) => {
+    try {
+      let db1 = new Map([])
+      let db2 = new Map([])
+      const encryptionStatus = safeStorage.isEncryptionAvailable();
+      let lockStringData = "fewf0dnv4ongdopsfv94nlkasfdgn9g4npiajgn2ijadg904nudiasgh4";
+      // let appData = ;
+      
+      const encryptedString = safeStorage.encryptString(lockStringData);
+
+      if(!encryptionStatus) {
+        console.log(`Unable to Set-Up Encryption Environment`);
+        return false
+      }
+
+      safeStorage.getSelectedStorageBackend((db1, db2) => {
+        for(let i = 0; i <= db1.length; i++) {
+          if(db1.length === 0) return null;
+          if(db2.length === 0) return null;
+          
+          if(db1.length < 10) {
+            db2.push(encryptedString)
+          }
+        }
+      });
+
+      safeStorage.decryptString(encryptedString)
+    } catch(err) {
+      throw new Error('App Storage Failure');
+      console.log('Failed to Safety Store App Data');
+    }
+  }
+  storageSystem();
+  
+  async function transactionHandler(app, event, callback) {
+    const server = inAppPurchase;
+
+        server.getReceiptURL((event, RecipientEmail) => {
+
+    });
+    server.getProducts()
+    server.purchaseProduct();
+    server.canMakePayments(true);
+    server.on("transactions-updated", (event) => {
+
+    })
+
+    server.once("connection", (stream) => {
+      console.log(`First Purchase order created`);
+    })
+    
+    server.addListener('transactions-updated', (event) => {
+    })
+  }
+  transactionHandler();
+  
+  async function pushNotificationHandler(event, callback) {
+    pushNotifications.addListener("received-apns-notification", () => {
+
+    })
+    pushNotifications.once("received-apns-notification", (event) => {
+
+    });
+
+    pushNotifications.registerForAPNSNotifications();
+    pushNotifications.unregisterForAPNSNotifications();
+  }
+  pushNotificationHandler();
+
+  async function appShareMeny() {
+    ShareMenu.name("more");
+    ShareMenu.length(5);
+    ShareMenu.apply(["obj1", "obj3"]);
+  }
   
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
