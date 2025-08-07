@@ -347,7 +347,7 @@ app.whenReady().then(() => {
       let db2 = new Map([])
       const encryptionStatus = safeStorage.isEncryptionAvailable();
       let lockStringData = "fewf0dnv4ongdopsfv94nlkasfdgn9g4npiajgn2ijadg904nudiasgh4";
-      // let appData = ;
+      // let appData = "";
       
       const encryptedString = safeStorage.encryptString(lockStringData);
 
@@ -378,7 +378,7 @@ app.whenReady().then(() => {
   async function transactionHandler(app, event, callback) {
     const server = inAppPurchase;
 
-        server.getReceiptURL((event, RecipientEmail) => {
+    server.getReceiptURL((event, RecipientEmail) => {
 
     });
     server.getProducts()
