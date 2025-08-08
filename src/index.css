@@ -137,8 +137,20 @@ body {
   .sidebar-btn-2,
   .sidebar-btn-3,
   .sidebar-btn-4 {
-    border-radius: 10px;
+    border-radius: 5px;
     transition: background 0.3s, color 0.3s, transform 0.2s;
+  }
+
+  .sidebar-btn-1::before,
+  .sidebar-btn-2::before,
+  .sidebar-btn-3::before,
+  .sidebar-btn-4::before {
+    background: #560bad;
+    height: 150px;
+    width: 200px;
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s
   }
 
   .sidebar-btn-1:hover,
@@ -149,6 +161,23 @@ body {
     color: darkblue;
     transform: translateY(-2px) scale(1.05);
   }
+
+  .sidebar-btn-1:hover::before,
+  .sidebar-btn-2:hover::before,
+  .sidebar-btn-3:hover::before,
+  .sidebar-btn-4:hover::before {
+    top: -30px;
+    left: -30px;
+  }
+
+  .sidebar-btn-1:active::before,
+  .sidebar-btn-2:active::before,
+  .sidebar-btn-3:active::before,
+  .sidebar-btn-4:active::before {
+    background: #3a0ca3;
+    transition: background 0s;
+  }
+
 
   .sidebar-footer {
     position: sticky;
