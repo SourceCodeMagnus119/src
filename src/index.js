@@ -11,6 +11,8 @@ const cluster = require('cluster');
 const path = require('node:path');
 const { URL } = require('url');
 const os = require('os');
+const { permission } = require('node:process');
+const { threadCpuUsage } = require('node:process');
 
 if(cluster.isPrimary) {
   const numCPU = os.cpus().length;
@@ -45,6 +47,7 @@ const createWindow = () => {
     //   height: 5,
     //   width: 5
     // },
+    threadCpuUsage: true,
     autoHideMenuBar: true,
     sessionStorage: true,
     roundedCorners: true,
@@ -69,9 +72,11 @@ const createWindow = () => {
       // sandbox: true,
       webSecurity: true,
       session: true,
+      webgl: true,
     },
   });
 
+  // mainWindow.webContents.openDevTools();
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
   mainWindow.webContents.on('before-input-event', (event, input) => {
     // Custom input event handler with custom shortcuts.
@@ -126,8 +131,6 @@ const createWindow = () => {
       duplicateWindow.loadURL(mainWindow.webContents.getURL());
     }
   })
-  mainWindow.setProgressBar(0, 100);
-  // mainWindow.webContents.openDevTools();
 
   popupWindow_default(mainWindow);
 
@@ -289,7 +292,7 @@ app.whenReady().then(() => {
   createWindow();
 
   ipcMain.on('perform-custom-action', (event) => {
-    console.log('Custom-button-Clicked')
+    console.log('Custom-menu-jumplist')
 
     Menu.buildFromTemplate([
       {
@@ -306,12 +309,12 @@ app.whenReady().then(() => {
       }
     ]);
   })
-  ipcMain.on('ping', (event) => {
-    console.log('yang')
-  });
-  ipcMain.on('IpLock', (event) => {
-    console.log('OHH! YEAHH!')
-  })
+  // ipcMain.on('ping', (event) => {
+  //   console.log('yang')
+  // });
+  // ipcMain.on('IpLock', (event) => {
+  //   console.log('OHH! YEAHH!')
+  // })
   ipcMain.handle('PictureInPictureEvent', (event) => {
     const focusedWindow = BrowserWindow.getFocusedWindow();
     // shortcutKeyBinds_PictureInPicture(focusedWindow);
