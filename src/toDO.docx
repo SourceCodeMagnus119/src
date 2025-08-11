@@ -15,7 +15,7 @@
 14: Launch Recall (Restore webcontents: Undo Feature).
 ✅ 15: Performance Timing.
 16: Picture in Picture Feature. Window event only.
-17: Session Management System.
+✅ 17: Session Management System.
 ✅ 18: Alt+Space => Fullscreen.
 ✅ 19: Desktop Installer && Command Line Installer(Choco).
 ✅ 20. Tray Icon implementation & Configuaration Menu.
@@ -26,13 +26,13 @@
 ✅ 25. Forge Configuaration.
 ✅ 26. New Window ~ Duplicate Window Feature Support (CTRL + N).
 ✅ 27. Home page Mouse right click Support - integration.
-28. Advanced Web, App and Remote Content security (XSS, RCE protection).
-29. Permission Request Handler.
+✅ 28. Advanced Web, App and Remote Content security (XSS, RCE protection).
+29. Permission Request Handler (NOTIFICATIONS, P-I-P, Microphone, Camera, Location, Network Access).
 ✅ 30. Update & Migrate App from using global Shortcuts to => BEFORE-INPUT-EVENT with custom shortcuts. (EVENT_INTERCEPTOR).
 ✅ 31. Taskbar invisible flashframe bug fix.
-32. Cache Management System.
+✅ 32. Cache Management System.
 ✅ 33. Bash Shell: EXTERNAL_ACTIVATION.
-34. Request Handler x Session Management System - HOME_PAGE_STYLING_BUG.
+✅ 34. Request Handler x Session Management System - HOME_PAGE_STYLING_BUG.
 35. IP_APP_LOCK - LOCK APP NETWORK ACCESS TO IP_ADDRESS ONLY.
 36. RENDERER_FEATURE: ADD_CUSTOM_LINKS_CREATION_TO_DIALOGUE_WINDOW.
 39. Custom Titlebar Jumplist(DROP_DOWN_MENU) Button: Website shortcuts.
