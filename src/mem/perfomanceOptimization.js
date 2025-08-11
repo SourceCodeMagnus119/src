@@ -9,7 +9,9 @@ app.on('ready', () => {
     app.addRecentDocument("C:/Users/Untoasted_Raisin/Desktop")
     app.applicationMenu()
     app.configureHostResolver()
-    app.getGPUInfo("complete")
+    app.getGPUInfo("complete", (promise, callback) => {
+        
+    })
     app.getAppMetrics(true)
     app.updateCurrentActivity()
     app.userAgentFallback()
