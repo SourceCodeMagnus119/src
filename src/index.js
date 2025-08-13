@@ -69,7 +69,7 @@ const createWindow = () => {
       nodeIntegrationInWorker: false,
       v8CacheOptions: 'bypassHeatCheck',
       nodeIntegration: false,
-      // sandbox: true,
+      // sandbox: false,
       webSecurity: true,
       session: true,
       webgl: true,
@@ -292,7 +292,8 @@ app.whenReady().then(() => {
   createWindow();
 
   ipcMain.on('perform-custom-action', (event) => {
-    console.log('Custom-menu-jumplist')
+    console.log('Custom-menu-jumplist');
+    app.emit('Custom-menu-jumplist');
 
     Menu.buildFromTemplate([
       {
