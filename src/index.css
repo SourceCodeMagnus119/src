@@ -29,6 +29,9 @@ body {
   align-items: center;
   padding: 0 10px;
   /* -webkit-app-region: drag; */
+
+  /* .more { */
+  /* } */
 }
 
 .search-bar {
