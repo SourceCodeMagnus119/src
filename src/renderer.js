@@ -50,17 +50,39 @@ window.addEventListener('contextmenu', (event) => {
 });
 
 /**
- * @param {CUSTOM_TITLE_BAR}
+ * @param {CUSTOM_TITLE_BAR_MENU_BUTTON}
+ * @Alternative Call `more` button to renderer process, CSSstyle and handle button logic in main process.
+ * @architecture BUTTON(RADIO) - EVENTLISTENER(CLICK) - MAIN(Open Context menu with website options)
  */
 window.addEventListener('DOMContentLoaded', () => {
     const customActionButton = document.getElementById('more')
 
     if(customActionButton) {
         customActionButton.addEventListener('click', () => {
-            ipcRenderer.send('perform-custom-action')
+            ipcRenderer.send('Custom-menu-jumplist')
         })
     }
 })
+
+/**
+ * @param {ON_PLAY_PictureInPicture}
+ */
+window.addEventListener('beforeinput', () => {
+    const pip = document.getElementById('picture-in-picture-window');
+
+    if(input.control && input.key.toLowerCase() === 'p') {
+        window.onplay((event) => {
+            
+        })
+    } else {
+        throw new Error('Error Activating picture in picture', err);
+    }
+})
+
+/**
+ * @param {DETECT_MODE}
+ */
+window.matchMedia('(prefers-color-mode: dark)').matches
 
 // async function yinYang() {
 //     const response = await window.SyffAPI.ping();
