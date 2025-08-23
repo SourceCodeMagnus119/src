@@ -301,7 +301,6 @@ app.whenReady().then(() => {
 
   ipcMain.on('perform-custom-action', (event) => {
     console.log('Custom-menu-jumplist');
-    app.emit('Custom-menu-jumplist');
 
     Menu.buildFromTemplate([
       {
