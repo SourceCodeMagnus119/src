@@ -7,11 +7,8 @@ app.on('ready', () => {
     app.commandLine.appendSwitch('disable-background-timer-throttling');
     
     app.addRecentDocument("C:/Users/Untoasted_Raisin/Desktop")
-    app.applicationMenu()
     app.configureHostResolver()
-    app.getGPUInfo("complete", (promise, callback) => {
-        
-    })
+    app.getGPUInfo("complete")
     app.getAppMetrics(true)
     app.updateCurrentActivity()
     app.userAgentFallback()
