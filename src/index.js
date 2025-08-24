@@ -13,6 +13,7 @@ const { URL } = require('url');
 const os = require('os');
 const { permission } = require('node:process');
 const { threadCpuUsage } = require('node:process');
+const { timeEnd } = require('node:console');
 
 if(cluster.isPrimary) {
   const numCPU = os.cpus().length;
@@ -142,20 +143,6 @@ const createWindow = () => {
 
   popupWindow_default(mainWindow);
 
-  if (
-    mainWindow.webContents.navigationHistory &&
-    typeof mainWindow.webContents.navigationHistory.getAllEntries === 'function'
-  ) {
-    const entries = mainWindow.webContents.navigationHistory.getAllEntries();
-    if (Array.isArray(entries)) {
-      entries.forEach((entry) => {
-        if (entry && typeof entry.title === 'string' && typeof entry.url === 'string') {
-          console.log(`${entry.title}: ${entry.url}`);
-        }
-      });
-    }
-  }
-
   app.whenReady().then(() => {
     // shortcutKeyBinds_FullscreenMouseGesture(mainWindow);
   }).then(showNotification);
@@ -192,6 +179,21 @@ const createWindow = () => {
   ])
   // mainWindow.setThumbarButtons([])
 
+    if (
+    mainWindow.webContents.navigationHistory &&
+    typeof mainWindow.webContents.navigationHistory.getAllEntries === 'function'
+  ) {
+    const entries = mainWindow.webContents.navigationHistory.getAllEntries();
+    if (Array.isArray(entries)) {
+      entries.forEach((entry) => {
+        if (entry && typeof entry.title === 'string' && typeof entry.url === 'string') {
+          mainWindow.loadURL(url)
+          console.log(`${entry.title}: ${entry.url}`);
+        }
+      });
+    }
+  }
+  
   const restore = async() => {
     const entries = mainWindow.webContents.navigationHistory.getAllEntries();
     const index = mainWindow.webContents.navigationHistory.getActiveIndex();
@@ -320,9 +322,10 @@ app.whenReady().then(() => {
   // ipcMain.on('ping', (event) => {
   //   console.log('yang')
   // });
-  // ipcMain.on('IpLock', (event) => {
-  //   console.log('OHH! YEAHH!')
-  // })
+  ipcMain.handle('IpLock', (event) => {
+    // app.on(console.alert(`Message: This is a test event from Preload script to Main proces.`))
+    console.log('OHH! YEAHH!')
+  })
   ipcMain.handle('PictureInPictureEvent', (event) => {
     const focusedWindow = BrowserWindow.getFocusedWindow();
     // shortcutKeyBinds_PictureInPicture(focusedWindow);
