@@ -9,18 +9,6 @@ body {
   color: rgb(55, 57, 58);
 }
 
-/* .titlebar {
-  height: 30px;
-  border-radius: 10%;
-  background: lightblue;
-  color: white;
-  display: flex;
-  padding: 3px;
-  justify-content: center;
-  align-items: center;
-  -webkit-app-region: drag;
-} */
-
 .custom-title-bar {
   height: 40px;
   background-color: #333;
