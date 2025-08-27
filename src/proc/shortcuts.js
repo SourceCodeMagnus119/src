@@ -131,12 +131,4 @@ function shortcutKeyBinds_FullscreenMouseGesture(mainWindow) {
     });
 }
 
-function shortcutKeyBinds_PictureInPicture(focusedWindow) {
-    if(focusedWindow) {
-        focusedWindow.webContents.send('toggle-picture-in-picture')
-    }
-    // globalShortcut.register('Ctrl+Shift+P', () => {
-    // })
-};
-
-module.exports = { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture, shortcutKeyBinds_PictureInPicture };
+module.exports = { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture };
