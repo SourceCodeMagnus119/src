@@ -16,7 +16,7 @@
 ✅ 15: Performance Timing.
 16: Picture in Picture Feature. Window event only.
 ✅ 17: Session Management System.
-✅ 18: Alt+Space => Fullscreen.
+✅ 18: Alt+Space => Fullscreen. ~ Keybind_Updated to Ctrl+Space.
 ✅ 19: Desktop Installer && Command Line Installer(Choco).
 ✅ 20. Tray Icon implementation & Configuaration Menu.
 ✅ 21. Task Bar Customization JUMP_LIST x THUMBNAIL_TOOLBAR x TASKBAR_ICON_OVERLAY x FLASH_FRAME.
@@ -46,4 +46,4 @@
 ✅ 47. Home Path: Shortcut Keybind => Control + H.
 ✅ 48. Save/Persist Custom Jumplist button items to local Storage (JSON) Throughout App Activity Timeline.
 49. ALLOW_CUSTOMIZATION_OF_POPUP_DIALOGUE_WINDOW_AND_DEFAULT_WINDOW.
-50. CUSTOM_GLOBAL_SEARCH_ALGORITHM: Propietary Pualgra Algorithm || Propietary Paulgirthm.
+50. GLOBAL_SEARCH_ALGORITHM.
