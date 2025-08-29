@@ -2,21 +2,26 @@ const { contextBridge, ipcRenderer } = require('electron');
 const { pushNotifications } = require('electron/main');
 
 contextBridge.exposeInMainWorld('SyffAPI', {
-	// ping: () => ipcRenderer.invoke('yin'),
-	electron: () => process.versions.electron,
-	chrome: () => process.versions.chrome,
-	node: () => process.versions.node,
+	PictureInPictureEvent: (pip) => ipcRenderer.invoke('picture-in-picture', pip),
+	setSesion: (session) => ipcRenderer.invoke('session', session),
+	setSessionStorage: (sessionStorage) => ipcRenderer.invoke('set-session-storage', sessionStorage),
+	customJumplistBtn: (openJumplist) => ipcRenderer.send('open-jumplist', openJumplist),
 
-	PictureInPictureEvent: () => ipcRenderer.invoke('picture-in-picture'),
-	sesion: () => ipcRenderer.invoke('sesion'),
-	sessionStorage: () => ipcRenderer.invoke('set-session-storage'),
+	setAppCache: (cache) => ipcRenderer.invoke('set-cache', cache),
+	setCacheStorage: (cacheStorage) => ipcRenderer.invoke('set-cache-storage', cacheStorage),
+	setAppHistory: (history) => ipcRenderer.send('set-history', history),
 
-	Cache: () => ipcRenderer.invoke('cache'),
-	CacheStorage: () => ipcRenderer.invoke('cache-storage'),
-	History: () => ipcRenderer.invoke('history'),
+	IpLock: (ipLock) => ipcRenderer.invoke('ip-lock', ipLock, () => {
+		// Detect the Ip-network adress and ip protocol.
+		// const ipA = ;
+		// const ipP = ;
+		// const trustedIp = new Map();
 
-	IpLock: () => ipcRenderer.invoke('ip-lock', () => {
-		const TestString = 'Test run #1: Ip-lock-system-registering';
-		console.log(`**: ${TestString}`);
+		// Check wether the IP-Adress is a trusted home Network,
+		// Else Ensure no no packages or message are sent over the n
+		// Return Alert message to Window `This is an untrusted IP, Please switch back to Home Netwrok.`
+		
+		// const TestString = 'Test run #1: Ip-lock-system-registering';
+		// console.log(`**: ${TestString}`);
 	})
 });
