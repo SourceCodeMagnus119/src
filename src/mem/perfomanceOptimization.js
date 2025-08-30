@@ -7,9 +7,18 @@ app.on('ready', () => {
     app.commandLine.appendSwitch('disable-background-timer-throttling');
     
     app.addRecentDocument("C:/Users/Untoasted_Raisin/Desktop")
-    app.configureHostResolver()
-    app.getGPUInfo("complete")
+    app.getGPUInfo('basic')
     app.getAppMetrics(true)
     app.updateCurrentActivity()
     app.userAgentFallback()
 });
+
+app.whenReady().then(() => {
+    app.configureHostResolver({
+        secureDnsMode: 'secure',
+        secureDnsServers: [
+            'https://cloudflare-dns.com/dns-query'
+        ]
+    })
+
+})
