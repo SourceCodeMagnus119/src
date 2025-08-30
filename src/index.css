@@ -1,28 +1,198 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
-  max-width: 100rem;
-  padding: 1rem;
-  background: rgb(27, 27, 27);
-  /* background-image: url("C:/Users/Untoasted_Raisin/Downloads/adro-bmw-m4-coupee-dark-car.jpg"); */
-  color: rgb(55, 57, 58);
+  overflow-x: hidden;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, */
+    /* Arial, sans-serif; */
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  max-width: 100%;
+  padding: 0.5rem;
+  background: #000000;
+  color: #f6e9C7;
 }
 
-.custom-title-bar {
+.nav-bar-Container {
+  margin-top: 0;
+  margin-bottom: auto;
+  overflow-x: hidden;
+  width: 100%;
+  display: flex;
+  animation: fadeIn 1s ease;
+}
+
+.nav-bar-Container {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  border: 2px solid green;
+  border-radius: 34px;
+  /* justify-content: center; */
+  /* animation: fadeIn 1s ease; */
+}
+
+.nav-bar-Container:first-child {
+  justify-content: flex-start;
+}
+
+.nav-bar-Container:nth-child(2) {
+  justify-content: center;
+}
+
+.logo-set {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.search-set {
+  display:  flex;
+  justify-content: center;
+}
+
+.menu-item-buttons-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logo img {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* flex-direction: row; */
+  /* position: absolute; */
+  /* top: 3%; */
+  /* left: 1.5%; */
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  height: auto;
+  width: auto;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-size: 180%;
+}
+
+.search {
+  display: flex;
+  /* align-items: center; */
+  flex-direction: row;
+  justify-content: center;
+  width: 5px;
+  height: 2px;
+}
+
+.search-button {
+  display: flex;
+  /* align-items: center; */
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 2px;
+  margin: 0;
+  padding: 0;
+}
+
+.more {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-items {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Breakpoints for navbar */
+@media (max-width: 760px) {
+  .nav-bar-Container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+  .nav-bar-Container .logo,
+  .nav-bar-Container .search,
+  .nav-bar-Container .search-button {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-bar-Container {
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .nav-bar-Container .logo,
+  .nav-bar-Container .search,
+  .nav-bar-Container .search-button {
+    width: auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-bar-Container {
+    padding: 2rem;
+    gap: 2rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.side-bar-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 20%;
+  z-index: 100;
+  background: rgba(30, 30, 30, 0.95);
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* .custom-title-bar {
   height: 40px;
   background-color: #333;
   color: whote;
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 10px; */
   /* -webkit-app-region: drag; */
 
   /* .more { */
   /* } */
-}
+/* } */
 
-.search-bar {
+/* .search-bar {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -38,9 +208,9 @@ body {
   .search-button {
     border-radius: 10px;
   }
-}
+} */
 
-.window-controls-macos-traffic-lights {
+/* .window-controls-macos-traffic-lights {
   display: flex;
   position: absolute;
   top: 1rem;
@@ -59,32 +229,21 @@ body {
   .traffic-light-minimize {
     border-radius: 50px;
   }
-}
+} */
 
-@keyframes fadeUp {
-  from {
-    opacity: 1;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(0);
-  }
-}
-
-.app-title {
+/* .app-title {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.welcome-message {
+/* .welcome-message {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.menu-img {
+/* .menu-img {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -92,7 +251,7 @@ body {
   transition: background 0.3s, transform 0.3s;
   cursor: pointer;
   transition: background 0.3s, color 0.3s, transform 0.2s;
-}
+} */
 
 .menu-img:active,
 .menu-img.clicked {
