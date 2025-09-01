@@ -2,7 +2,7 @@
  * @param Syff APP
  * @author PAUL JH GOWASEB <SourceCodeMagnus119> email: <paulusg131@gmail.com>
  */
-const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture, shortcutKeyBinds_PictureInPicture } = require('./proc/shortcuts');
+const { popupWindow_default, shortcutKeyBinds_websites, shortcutKeyBinds_exects, shortcutKeyBinds_FullscreenMouseGesture } = require('./proc/shortcuts');
 const { app, Tray, Menu, nativeImage, BrowserWindow, ipcMain, globalShortcut, webContents, shell } = require('electron');
 const { ShareMenu, inAppPurchase, pushNotifications, safeStorage } = require("electron");
 const showNotification = require('./proc/notification');
@@ -54,7 +54,7 @@ const createWindow = () => {
     roundedCorners: true,
     transparent: false,
     statusbar: true,
-    vibrancy: false,
+    vibrancy: true,
     darkTheme: true,
     title: "SYFF",
     icon: appIcon,
@@ -79,8 +79,14 @@ const createWindow = () => {
 
   // mainWindow.webContents.openDevTools();
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.webContents.setZoomLevel(0);
   mainWindow.webContents.on('before-input-event', (event, input) => {
     // Custom input event handler with custom shortcuts.
+    if(input.control && input.key.toLowerCase() === 'h') {
+      event.preventDefault();
+
+      mainWindow.loadFile(path.join(__dirname, "index.html"))
+    }
     if(input.control && input.key.toLowerCase() === 'm') {
       event.preventDefault();
 
@@ -136,6 +142,11 @@ const createWindow = () => {
           event.preventDefault();
 
           shortcutKeyBinds_websites(duplicateWindow);
+        }
+        if(input.control && input.key.toLowerCase() === 'h') {
+          event.preventDefault();
+
+          duplicateWindow.loadFile(path.join(__dirname, "index.html"))
         }
       })
     }
@@ -214,10 +225,11 @@ const createWindow = () => {
   });
 
   const contextMenu = Menu.buildFromTemplate([
-    { label: 'accounts', type: 'radio' },
+    { label: 'Ip Lock', type: 'radio' },
     { label: 'keybinds', type: 'radio' },
     { label: 'Websites', type: 'radio', checked: true  },
     { label: 'settings', type: 'radio' },
+    { label: 'help', type: 'radio' },
   ]);
   tray.setToolTip('syff');
   tray.setContextMenu(contextMenu);
@@ -261,37 +273,163 @@ app.setUserTasks([
     description: 'Open the help window'
   }
 ])
-// app.setUserTasks([])
 
-const dockMenu = Menu.buildFromTemplate([
+app.setJumpList([
   {
-    label: 'New Window',
-    click () { console.log('Launch New Window' )}
-  },
-  {
-    label: 'Options',
-    submenu: [
-      { label: 'Basic' },
-      { label: 'Pro' },
+    type: 'custom',
+    name: 'Recent Projects',
+    items: [
+      { type: 'file', path: 'C:\\Projects\\project1.proj' },
+      { type: 'file', path: 'C:\\Projects\\project2.proj' }
     ]
   },
-  {
-    label: 'Shortcuts',
-    submenu: [
-      { label: 'Alt+Space',
-        click () { console.log('Fullscreen Activated' )}
+  { // has a name so `type` is assumed to be "custom"
+    name: 'Tools',
+    items: [
+      {
+        type: 'task',
+        title: 'Tool A',
+        program: process.execPath,
+        args: '--run-tool-a',
+        iconPath: process.execPath,
+        iconIndex: 0,
+        description: 'Runs Tool A'
       },
-      { label: 'Ctrl+M',
-        click () { console.log('Popup launched') }
+      {
+        type: 'task',
+        title: 'Tool B',
+        program: process.execPath,
+        args: '--run-tool-b',
+        iconPath: process.execPath,
+        iconIndex: 0,
+        description: 'Runs Tool B'
+      }
+    ]
+  },
+  { type: 'frequent' },
+  { // has no name and no type so `type` is assumed to be "tasks"
+    items: [
+      {
+        type: 'task',
+        title: 'New Project',
+        program: process.execPath,
+        args: '--new-project',
+        description: 'Create a new project.'
       },
-      { label: 'Alt+Backspace',
-        click () { console.log('Navigate backwords') },
-      },
-      { label: 'Alt+RightBracket',
-        click () { console.log('Navigate forwards') }
+      { type: 'separator' },
+      {
+        type: 'task',
+        title: 'Recover Project',
+        program: process.execPath,
+        args: '--recover-project',
+        description: 'Recover Project'
       }
     ]
   }
+]);
+
+const isMac = process.platform === 'darwin';
+const dockMenu = Menu.buildFromTemplate([
+  // { role: 'appMenu' }
+  ...(isMac
+    ? [{
+        label: app.name,
+        submenu: [
+          { role: 'about' },
+          { type: 'separator' },
+          { role: 'services' },
+          { type: 'separator' },
+          { role: 'hide' },
+          { role: 'hideOthers' },
+          { role: 'unhide' },
+          { type: 'separator' },
+          { role: 'quit' }
+        ]
+      }]
+    : []),
+  // { role: 'fileMenu' }
+  {
+    label: 'File',
+    submenu: [
+      isMac ? { role: 'close' } : { role: 'quit' }
+    ]
+  },
+  // { role: 'editMenu' }
+  {
+    label: 'Edit',
+    submenu: [
+      { role: 'undo' },
+      { role: 'redo' },
+      { type: 'separator' },
+      { role: 'cut' },
+      { role: 'copy' },
+      { role: 'paste' },
+      ...(isMac
+        ? [
+            { role: 'pasteAndMatchStyle' },
+            { role: 'delete' },
+            { role: 'selectAll' },
+            { type: 'separator' },
+            {
+              label: 'Speech',
+              submenu: [
+                { role: 'startSpeaking' },
+                { role: 'stopSpeaking' }
+              ]
+            }
+          ]
+        : [
+            { role: 'delete' },
+            { type: 'separator' },
+            { role: 'selectAll' }
+          ])
+    ]
+  },
+  // { role: 'viewMenu' }
+  {
+    label: 'View',
+    submenu: [
+      { role: 'reload' },
+      { role: 'forceReload' },
+      { role: 'toggleDevTools' },
+      { type: 'separator' },
+      { role: 'resetZoom' },
+      { role: 'zoomIn' },
+      { role: 'zoomOut' },
+      { type: 'separator' },
+      { role: 'togglefullscreen' }
+    ]
+  },
+  // { role: 'windowMenu' }
+  {
+    label: 'Window',
+    submenu: [
+      { role: 'minimize' },
+      { role: 'zoom' },
+      ...(isMac
+        ? [
+            { type: 'separator' },
+            { role: 'front' },
+            { type: 'separator' },
+            { role: 'window' }
+          ]
+        : [
+            { role: 'close' }
+          ])
+    ]
+  },
+  // {
+  //   role: 'help',
+  //   submenu: [
+  //     {
+  //       label: 'Learn More',
+  //       click: async () => {
+  //         const { shell } = require('electron')
+  //         await shell.openExternal('https://electronjs.org')
+  //       }
+  //     }
+  //   ]
+  // }
 ])
 
 app.whenReady().then(() => {
@@ -301,34 +439,40 @@ app.whenReady().then(() => {
 app.whenReady().then(() => {
   createWindow();
 
-  ipcMain.on('perform-custom-action', (event) => {
-    console.log('Custom-menu-jumplist');
-
-    Menu.buildFromTemplate([
-      {
-        label: "Menu",
-        click () {}
-      },
-      {
-        label: "options",
-        submenu: [
-          { label: "shortcuts" },          
-          { label: "help" },          
-          { label: "snapshot" },          
-        ]
-      }
-    ]);
+  ipcMain.on('custom-menu-jumlist', (event) => {
+    console.log('MORE Button toggled!!');
   })
-  // ipcMain.on('ping', (event) => {
-  //   console.log('yang')
-  // });
+  
   ipcMain.handle('IpLock', (event) => {
+    // CORE BUTTON LOGIC for the `Network-Toggler` Toggle.
     // app.on(console.alert(`Message: This is a test event from Preload script to Main proces.`))
     console.log('OHH! YEAHH!')
   })
+  
   ipcMain.handle('PictureInPictureEvent', (event) => {
-    const focusedWindow = BrowserWindow.getFocusedWindow();
-    // shortcutKeyBinds_PictureInPicture(focusedWindow);
+    const focusedWindow = BrowserWindow.getFocusedWindow({
+      frame: false,
+      width: 100,
+      height: 100,
+      roundedCorners: true,
+      sessionStorage: true,
+      webPreferences: mainWindow.webContents.getLastWebPreferences()
+    })
+  
+    focusedWindow.loadURL(mainWindow.webContent.getURL())
+  })
+  
+  ipcMain.on('show-context-menu', (event) => {
+    const template = [
+      {
+        label: 'Menu Item 1',
+        click: () => { event.sender.send('context-menu-command', 'menu-item-1') }
+      },
+      { type: 'separator' },
+      { label: 'Menu Item 2', type: 'checkbox', checked: true }
+    ]
+    const menu = Menu.buildFromTemplate(template)
+    menu.popup({ window: BrowserWindow.fromWebContents(event.sender) })
   })
 
   session.fromPartition('').setPermissionRequestHandler((webContents, permission, callback) => {
@@ -389,40 +533,13 @@ app.whenReady().then(() => {
   // }
   // storageSystem();
   
-  // async function transactionHandler(app, event, callback) {
-  //   const server = inAppPurchase;
+  pushNotifications.registerForAPNSNotifications().then((token) => {
+    // forward token to your remote notification server
+  })
 
-  //   server.getReceiptURL((event, RecipientEmail) => {
-
-  //   });
-  //   server.getProducts()
-  //   server.purchaseProduct();
-  //   server.canMakePayments(true);
-  //   server.on("transactions-updated", (event) => {
-
-  //   })
-
-  //   server.once("connection", (stream) => {
-  //     console.log(`First Purchase order created`);
-  //   })
-    
-  //   server.addListener('transactions-updated', (event) => {
-  //   })
-  // }
-  // transactionHandler();
-  
-  // async function pushNotificationHandler(event, callback) {
-  //   pushNotifications.addListener("received-apns-notification", () => {
-
-  //   })
-  //   pushNotifications.once("received-apns-notification", (event) => {
-
-  //   });
-
-  //   pushNotifications.registerForAPNSNotifications();
-  //   pushNotifications.unregisterForAPNSNotifications();
-  // }
-  // pushNotificationHandler();
+  pushNotifications.on('received-apns-notification', (event, userInfo) => {
+    // generate a new Notification object with the relevant userInfo fields
+  })
 
   // async function appShareMeny() {
   //   ShareMenu.name("more");
@@ -436,6 +553,15 @@ app.whenReady().then(() => {
     }
   });
 });
+
+app.on('login', (details, callback, webContents, event, authInfo) => {
+  event.preventDefault();
+  callback('username', 'secret');
+})
+
+app.on('session-created', (session) => {
+  console.log(session);
+})
 
 app.on('web-contents-created', (event, contents) => {
   contents.on('will-attach-webview', (event, webPreferences, params) => {
@@ -455,14 +581,5 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
-
-// const shortcutPath = path.join(os.homedir(), 'Desktop', 'SYFF.lnk');
-// shell.writeShortcutLink(shortcutPath, {
-//   target: process.execPath,
-//   args: '',
-//   description: 'SYFF Desktop Shortcut',
-//   icon: process.execPath,
-//   iconIndex: 0
-// });
 
 module.exports = { app };
