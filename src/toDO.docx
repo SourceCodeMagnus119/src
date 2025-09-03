@@ -38,7 +38,7 @@
 ✅ 39. Custom Jumplist Button(DROP_DOWN_MENU) Button: Website shortcuts.
 40. NGINX: LOAD-BALANCER. To handle website-bouncing && application launching as fast as possible with as low resources as possible. (implementation-Wise THIS MEANS I HAVE TO FIND OR CREATE MY OWN WAY OF ALLOWING THE RENDERER_PROCESS AND MAIN_PROCESS TO INTERACT WITH NGINX_PROXY BEFORE THE IPC-CYCLE IS COMPLETE.)
 41. APP_SAFE_STORAGE_SYSTEM.
-42. TRANSACTION MANAGEMENT SYSTEM.
+~~ 42. TRANSACTION MANAGEMENT SYSTEM.
 43. APP_VITALS_CHECK: PERFORMANCE_BOTTLENECKING, POTENTIAL_DATA_LEAKS, APP_VULNIRABLITIES
 44. Register `syff` app installer to `choco` installer package manager via 'nupkg' tagged file.
 ✅ 45. EXTENDED_DIALOGUE_BOX_FEATURE_TO_CHILD_DUPLICATE_WINDOW_.
@@ -46,5 +46,5 @@
 ✅ 47. Home Path: Shortcut Keybind => Control + H.
 ✅ 48. Save/Persist Custom Jumplist button items to local Storage (JSON) Throughout App Activity Timeline.
 49. ALLOW_CUSTOMIZATION_OF_POPUP_DIALOGUE_WINDOW_AND_DEFAULT_WINDOW.
-50. GLOBAL_SEARCH_ALGORITHM.
+✅ 50. GLOBAL_SEARCH_ALGORITHM.
 51. OS_LEVEL_APP_LAUNCH_SHORTCUT. Windows | MACOS ~.
