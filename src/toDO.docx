@@ -50,4 +50,4 @@
 51. OS_LEVEL_APP_LAUNCH_SHORTCUT. Windows | MACOS ~.
 52. AUTO_UPDATE: FOR WINDOWS(ONLY ACCESSIBLE AFTER APP IS INSTALLED ON USERS COMP) || MACOS(Ensure app is signed fir automatic updates. A rekuirement of Skuirel.Mac).
 53. Co-axial File Open Event Process: Default MacOs events, counter-integrate win-64 events.
-54. Quick-Type feature within Search Field with "/" keypress.
+54. Quick-Type feature, Activate Search Field with "/" keypress.
