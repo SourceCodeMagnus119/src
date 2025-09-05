@@ -12,13 +12,3 @@ app.on('ready', () => {
     app.updateCurrentActivity()
     app.userAgentFallback()
 });
-
-app.whenReady().then(() => {
-    app.configureHostResolver({
-        secureDnsMode: 'secure',
-        secureDnsServers: [
-            'https://cloudflare-dns.com/dns-query'
-        ]
-    })
-
-})
