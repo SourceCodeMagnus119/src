@@ -3,9 +3,6 @@ const { pushNotifications } = require('electron/main');
 
 contextBridge.exposeInMainWorld('SyffAPI', {
 	PictureInPictureEvent: (pip) => ipcRenderer.invoke('picture-in-picture', pip),
-	setSesion: (session) => ipcRenderer.invoke('session', session),
-	setSessionStorage: (sessionStorage) => ipcRenderer.invoke('set-session-storage', sessionStorage),
-	customJumplistBtn: (openJumplist) => ipcRenderer.send('open-jumplist', openJumplist),
 
 	setAppCache: (cache) => ipcRenderer.invoke('set-cache', cache),
 	setCacheStorage: (cacheStorage) => ipcRenderer.invoke('set-cache-storage', cacheStorage),
