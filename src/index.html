@@ -11,66 +11,115 @@
     <title>SYFF</title>
   </head>
   <body>
+
     <nav class="nav-bar-Container" id="nav-bar">
-      <div class="logo-set">
+      <ul>
+        <li>
+          <!-- <a href="home.html">Home</a> -->
+          <!-- <a href="about.html">About</a> -->
+          <div class="logo-set">
+            <img class="logo" src="./assets/syff-app-icon.favicon.ico" alt="Syff-logo" srcset="" width="38px" height="38px" style="cursor:pointer;" onclick="window.location.reload();">
+            <a class="title" href="javascript:void(0);" onclick="window.location.reload();">SYFF</a>
+          </div>
+
+          <div class="search-set">
+            <input type="search" name="Search" id="search" placeholder="Search... 🔍">
+            <button type="button" onclick="searchGoogle()" id="search-button">...Search...</button>
+          </div>
+
+          <div class="menu-item-buttons-container">
+            <button class="more" type="button" onclick="toggleMenu()">More</button>
+            <button class="edit-items" type="button" onclick="toggleEditMode()">&#43; Edit items</button>
+          </div>
+
+          <div class="container" id="menu-container" style="display:none;">
+            <ul id="menu-list">
+            <!-- Menu items will be rendered here -->
+            </ul>
+          </div>
+          
+          <div id="edit-items-modal" style="display:none; position:fixed; top:20%; left:50%; transform:translate(-50%,0); background:#fff; border:1px solid #ccc; padding:20px; z-index:1000;">
+            <h3>Edit Menu Items</h3>
+            <form id="edit-items-form">
+              <!-- Dynamic form fields -->
+            </form>
+            <button id="add-item-button" type="button" onclick="addMenuItem()">Add Item</button>
+            <button id="remove-item-button" type="button" onclick="removeMenuItem()">Remove Last Item</button>
+            <button id="save-item-button" type="button" onclick="saveMenuItems()">Save</button>
+            <button id="edit-item-button" type="button" onclick="toggleEditMode()">Cancel</button>
+          </div>
+        </li>
+      </ul>
+      <!-- <div class="logo-set">
         <img class="logo" src="./assets/syff-app-icon.favicon.ico" alt="Syff-logo" srcset="" width="38px" height="38px" style="cursor:pointer;" onclick="window.location.reload();">
         <a class="title" href="javascript:void(0);" onclick="window.location.reload();">SYFF</a>
-      </div>
+      </div> -->
 
-      <div class="search-set">
+      <!-- <div class="search-set">
         <input type="search" name="Search" id="search" placeholder="Search...">
         <button type="button" onclick="searchGoogle()" id="search-button">...Search...</button>
-      </div>
+      </div> -->
 
-      <div class="menu-item-buttons-container">
+      <!-- <div class="menu-item-buttons-container">
         <button class="more" type="button" onclick="toggleMenu()">More</button>
         <button class="edit-items" type="button" onclick="toggleEditMode()">&#43; Edit items</button>
-      </div>
+      </div> -->
 
-      <div class="container" id="menu-container" style="display:none;">
+      <!-- <div class="container" id="menu-container" style="display:none;">
         <ul id="menu-list">
-        <!-- Menu items will be rendered here -->
+        Menu items will be rendered here
         </ul>
-      </div>
+      </div> -->
       
-      <div id="edit-items-modal" style="display:none; position:fixed; top:20%; left:50%; transform:translate(-50%,0); background:#fff; border:1px solid #ccc; padding:20px; z-index:1000;">
+      <!-- <div id="edit-items-modal" style="display:none; position:fixed; top:20%; left:50%; transform:translate(-50%,0); background:#fff; border:1px solid #ccc; padding:20px; z-index:1000;">
         <h3>Edit Menu Items</h3>
         <form id="edit-items-form">
-          <!-- Dynamic form fields -->
+          Dynamic form fields
         </form>
         <button id="add-item-button" type="button" onclick="addMenuItem()">Add Item</button>
         <button id="remove-item-button" type="button" onclick="removeMenuItem()">Remove Last Item</button>
         <button id="save-item-button" type="button" onclick="saveMenuItems()">Save</button>
         <button id="edit-item-button" type="button" onclick="toggleEditMode()">Cancel</button>
-      </div>
+      </div> -->
     </nav>
 
     <aside id="side-bar-container">
-      <div class="sidebar-buttons-conat">
-        <ul>
+      <ul>
+        <li>
           <!-- UNHANDLED ONCLICK LOGIC -->
-          <button type="button" class="sidebar-btn-1" onclick="openAppHistory()" title="History">
-            <i class='bxr  bx-history'  ></i>
-            History
-          </button>
-          <button type="button" class="sidebar-btn-2" onclick="customizeMainContainerCards()" title="Customize">
-            <i class='bxr  bx-edit'  ></i> 
-            Customize
-          </button>
-          <button type="button" class="sidebar-btn-3" onclick="openProfile()" title="Profile">
-            <i class='bxr  bx-user-circle'  ></i> 
-            Profile
-          </button>
-          <button type="button" class="sidebar-btn-4" onclick="settingsPage()" title="Settings">
-            <i class='bxr  bx-cog'  ></i> 
-            Settings
-          </button>
-        </ul>
-       </div>
+          <div class="btn-ctn-1">
+            <button type="button-1" class="sidebar-btn-1" onclick="openAppHistory()" title="History">
+              <i class='bxr  bx-history'  ></i>
+              History
+            </button>
+          </div>
+
+          <div class="btn-ctn-2">
+            <button type="button-2" class="sidebar-btn-2" onclick="customizeMainContainerCards()" title="Customize">
+              <i class='bxr  bx-edit'  ></i> 
+              Customize
+            </button>
+          </div>
+
+          <div class="btn-ctn-3">
+            <button type="button-3" class="sidebar-btn-3" onclick="openProfile()" title="Profile">
+              <i class='bxr  bx-user-circle'  ></i> 
+              Profile
+            </button>
+          </div>
+
+          <div class="btn-ctn-4">
+            <button type="button-4" class="sidebar-btn-4" onclick="settingsPage()" title="Settings">
+              <i class='bxr  bx-cog'  ></i> 
+              Settings
+            </button>
+          </div>
+        </li>
+      </ul>
     </aside>
 
     <main id="main-container">
-      <article>
+      <article class="article-heading">
         <figure>News</figure>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tempore nulla voluptate laboriosam quae officiis maxime eligendi accusamus temporibus, dolorem corrupti vitae natus quasi at! Optio porro ipsum placeat nostrum.</p>
       </article>
@@ -79,105 +128,21 @@
       
       <div class="page-control-buttons-container">
         <!-- UNHANDLED ONCLICK LOGIC -->
-        <button id="previous-page-button" type="button" onclick="previousPage()">Prev</button>
-        <button id="next-page-button" type="button" onclick="nextPage()">Next</button>
+        <ul>
+          <li>
+            <button id="previous-page-button" type="button" onclick="previousPage()">Prev</button>
+            <div class="page-number-display-box">
+            <!-- <input class="number-display-box" name="number" placeholder="1"> -->
+            </div>
+            <button id="next-page-button" type="button" onclick="nextPage()">Next</button>
+          </li>
+        </ul>
        </div>
     </main>
 
     <footer id="footer-container">
       <p> Copyright: <span id="current-year"> </span> @Verrsoft Inc</p>
     </footer>
-
-    
-    
-    <!-- <div class="custom-title-bar"> -->
-      <!-- Window Controls -->
-      <!-- <div class="window-controls-macos-traffic-lights">
-        <button class="traffic-light-close" title="Close" style="background:#ff5f57;"></button>
-        <button class="traffic-light-maximize" title="Maximize" style="background:#28c940;"></button>
-        <button class="traffic-light-minimize" title="Minimize" style="background:#ffbd2e;"></button>
-      </div> -->
-    <!-- </div> -->
-
-    <!-- Search Bar -->
-    <!-- <div class="search-bar">
-      <input class="search" type="text" placeholder="🔍 Search...." />
-      <button class="search-button">🔍</button>
-    </div> -->
-
-    <!-- Window minimize, maximize, close -->
-    <!-- <div class="window-controls-macos-traffic-lights">
-      <button class="traffic-light-close" title="Close" style="background:#ff5f57;"></button>
-      <button class="traffic-light-maximize" title="Maximize" style="background:#28c940;"></button>
-      <button class="traffic-light-minimize" title="Minimize" style="background:#ffbd2e;"></button>
-    </div> -->
-
-    <!-- <h1 class="app-title">💖 SYFF ELECTRON APP!</h1>
-    <p class="welcome-message">Welcome to my Syff application.</p> -->
-
-    <!-- Menu Button -->
-    <!-- <img class="menu-img" src="/Users/Untoasted_Raisin/Pictures/menu-wider-1024x1024.png" alt="menu-wider-1024x1024" srcset="" width="34" height="34"> -->
-    <!-- <div class="menu-drawer"> -->
-      <!-- Sidebar Contents With footer -->
-    <!-- </div> -->
-    
-    <!-- Side Bar  -->
-    <!-- <div class="side-bar" id="side-bar"> -->
-      <!-- <h1 class="side-bar-title">SYFF - side bar</h1> -->
-      <!-- 4 buttons (History, Customize, Profile, Settings ) with icons -->
-      <!-- <button class="sidebar-btn-1" title="History">
-        <i class='bxr  bx-history'  ></i>
-        History
-      </button>
-      <button class="sidebar-btn-2" title="Customize">
-        <i class='bxr  bx-edit'  ></i> 
-        Customize
-      </button>
-      <button class="sidebar-btn-3" title="Profile">
-        <i class='bxr  bx-user-circle'  ></i> 
-        Profile
-      </button>
-      <button class="sidebar-btn-4" title="Settings">
-        <i class='bxr  bx-cog'  ></i> 
-        Settings
-      </button> -->
-
-      <!-- Line Divider between main page and sideBar. Position: right -->
-      <!-- <hr class="sidebar-divider" style="border: none; border-right: 1px solid #ccc; height: 100%; position: absolute; right: 0; top: 0;"> -->
-
-      <!-- Footer -->
-      <!-- <footer class="sidebar-footer">
-        <small>(c) Verrsoft Inc Ltd 2025, All rights reserved.</small>
-      </footer> -->
-    <!-- </div> -->
-
-    <!-- Main Page -->
-    <!-- <div class="main-page">
-      <h1 class="main-header">SYFF - Main Page</h1>
-      <div class="page-controls">
-        <button class="filter">
-          <i class='bxr  bx-filter'  ></i> 
-          Filter
-        </button>
-        <button class="prev">
-          <i class='bxr  bx-chevrons-left'  ></i> 
-          Prev
-        </button>
-        <button class="next">
-          <i class='bxr  bx-chevrons-right'  ></i> 
-          Next
-        </button>
-        <button class="refresh">
-          <i class='bxr  bx-refresh-cw-alt'  ></i> 
-          Refresh
-        </button>
-      </div>
-      <p class="main-content">This is the main Content area. And the sentence is a test to see how wide the content waterfalls of the screen and if it has and edge wrapper active or one needs to be implemented.</p> -->
-      
-      <!-- Filter feature -->
-      <!-- oder content -->
-      <!-- more -->
-    <!-- </div> -->
   </body>
 
   <script>
@@ -199,7 +164,14 @@
         searchButton.click();
       }
     });
-    
+
+    document.addEventListener("keypress", function(event) {
+      if(event.key === "/" && !event.target.matches('input, textarea')) {
+        event.preventDefault();
+        searchInput.focus();
+      }
+    })
+
     function toggleMenu() {
       const menu = document.getElementById('menu-container');
       menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
