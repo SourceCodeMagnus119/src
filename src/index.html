@@ -23,13 +23,13 @@
           </div>
 
           <div class="search-set">
-            <input type="search" name="Search" id="search" placeholder="Search... 🔍">
-            <button type="button" onclick="searchGoogle()" id="search-button">...Search...</button>
+            <input type="search" name="Search" id="search" placeholder="🔍 Search">
+            <button type="button-search" onclick="searchGoogle()" id="search-button">Search</button>
           </div>
 
           <div class="menu-item-buttons-container">
-            <button class="more" type="button" onclick="toggleMenu()">More</button>
-            <button class="edit-items" type="button" onclick="toggleEditMode()">&#43; Edit items</button>
+            <button class="more" type="button-edit" onclick="toggleMenu()">More</button>
+            <button class="edit-items" type="button-edit" onclick="toggleEditMode()">&#43; Edit items</button>
           </div>
 
           <div class="container" id="menu-container" style="display:none;">
@@ -88,28 +88,28 @@
         <li>
           <!-- UNHANDLED ONCLICK LOGIC -->
           <div class="btn-ctn-1">
-            <button type="button-1" class="sidebar-btn-1" onclick="openAppHistory()" title="History">
+            <button type="button-side" class="sidebar-btn-1" onclick="openAppHistory()" title="History">
               <i class='bxr  bx-history'  ></i>
               History
             </button>
           </div>
 
           <div class="btn-ctn-2">
-            <button type="button-2" class="sidebar-btn-2" onclick="customizeMainContainerCards()" title="Customize">
+            <button type="button-side" class="sidebar-btn-2" onclick="customizeMainContainerCards()" title="Customize">
               <i class='bxr  bx-edit'  ></i> 
               Customize
             </button>
           </div>
 
           <div class="btn-ctn-3">
-            <button type="button-3" class="sidebar-btn-3" onclick="openProfile()" title="Profile">
+            <button type="button-side" class="sidebar-btn-3" onclick="openProfile()" title="Profile">
               <i class='bxr  bx-user-circle'  ></i> 
               Profile
             </button>
           </div>
 
           <div class="btn-ctn-4">
-            <button type="button-4" class="sidebar-btn-4" onclick="settingsPage()" title="Settings">
+            <button type="button-side" class="sidebar-btn-4" onclick="settingsPage()" title="Settings">
               <i class='bxr  bx-cog'  ></i> 
               Settings
             </button>
@@ -130,11 +130,11 @@
         <!-- UNHANDLED ONCLICK LOGIC -->
         <ul>
           <li>
-            <button id="previous-page-button" type="button" onclick="previousPage()">Prev</button>
+            <button id="previous-page-button" type="button-page" onclick="previousPage()">Prev</button>
             <div class="page-number-display-box">
             <!-- <input class="number-display-box" name="number" placeholder="1"> -->
             </div>
-            <button id="next-page-button" type="button" onclick="nextPage()">Next</button>
+            <button id="next-page-button" type="button-page" onclick="nextPage()">Next</button>
           </li>
         </ul>
        </div>
