@@ -1,6 +1,4 @@
 body {
-  /* overflow-x: scroll; */
-  /* overflow-y: scroll; */
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, */
     /* Arial, sans-serif; */
   width: 100%;
@@ -10,21 +8,22 @@ body {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   background: #000000;
   color: #f6e9C7;
 }
 
 /* NAVBAR */
 nav {
-  justify-content: center;
   list-style: none;
   animation: fadeIn 1s ease;
-  border: 2px solid green;
+  border-bottom: 2px solid yellow;
+  border-radius: 30px;
 }
 
 nav ul {
-  display: flex;
+  /* justify-content: center; */
+  /* background-color: orange; */
 }
 
 nav ul li {
@@ -33,24 +32,29 @@ nav ul li {
 }
 
 nav ul li .logo-set {
-  background-color: #794325;
+  justify-content: flex-start;
+  /* background-color: #794325; */
+  position: absolute;
+  left: 22px;
 }
 
 nav ul li .search-set {
-  background-color: #287935;
+  /* background-color: #287935; */
 }
 
 nav ul li .menu-item-buttons-container {
-  /* height: 20%; */
+  justify-content: flex-end;
+  position: absolute;
+  right: 25px;
 }
 
 input[type="search"] {
-  width: 200px;
   padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 20px;
   background-color: #f9f9f9;
   gap: 5px;
+  min-width: 65%;
   font-size: 16px;
   color: #333;
   outline: none; /* Removes default focus outline */
@@ -58,11 +62,37 @@ input[type="search"] {
 
 input[type="search"]:hover {
   border-color: #999;
+  color: white;
+  background: darkblue;
 }
 
 input[type="search"]:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button[type="button-search"] {
+  border-radius: 55px;
+  background-color: rgb(65, 1, 65);
+  padding: 8px 12px;
+}
+
+button[type="button-edit"] {
+  border-radius: 55px;
+  background-color: blue;
+  padding: 8px 12px;
+}
+
+button[type="button-side"] {
+  border-radius: 55px;
+  background-color: goldenrod;
+  padding: 8px 12px;
+}
+
+button[type="button-page"] {
+  border-radius: 55px;
+  background-color: silver;
+  padding: 8px 12px;
 }
 
 /* Breakpoints for navbar */
@@ -117,6 +147,7 @@ input[type="search"]:focus {
 aside {
   display: flex;
   align-items: column;
+  gap: 10px;
 }
 
 aside ul {
@@ -124,7 +155,9 @@ aside ul {
 }
 
 aside ul li {
-  
+  display: flex;
+  flex-direction: column;
+  /* background-color: #794325; */
 }
 
 aside ul li button[type="button-1"] {
