@@ -1,20 +1,28 @@
 const nginx = require('nginx');
 const dotenv = require('dotenv');
 
-class handlerX {
+class ngx {
     constructor(options, key) {
         this.options = options;
-        this.key = key;
+        this.key = process.env.KEY;
     }
 
-    async connect() {}
+    async connect(res, options, key) {
+        // Emit 3 events
+    }
 
-    async disconnect() {}
+    async disconnect() {
+        // Emit 2 events
+    }
 
-    async certificateManager() {}
+    async certificateManager() {
+        // Emit 3 events
+    }
 
-    async loadBalancingMethods() {}
+    async loadBalancingMethods() {
+        // Emit 4 events
+    }
 }
-handlerX();
+ngx();
 
-module.exports = { handlerX };
+module.exports = { ngx };
