@@ -52,11 +52,11 @@ input[type="search"] {
   padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 20px;
-  background-color: #f9f9f9;
+  background-color: #000000;
   gap: 5px;
-  min-width: 65%;
+  width: 285px;
   font-size: 16px;
-  color: #333;
+  color: #999;
   outline: none; /* Removes default focus outline */
 }
 
@@ -81,6 +81,7 @@ button[type="button-edit"] {
   border-radius: 55px;
   background-color: blue;
   padding: 8px 12px;
+  color: #999;
 }
 
 button[type="button-side"] {
@@ -195,6 +196,18 @@ main article p {
 
 main section {
 
+}
+
+main .content-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 8px;
+}
+
+main .content-grid .content-1 {
+  grid-column: span 2 / span 2;
+  background-color: blueviolet;
 }
 
 main .page-control-buttons-container {
