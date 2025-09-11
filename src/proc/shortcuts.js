@@ -68,8 +68,6 @@ function shortcutKeyBinds_websites(mainWindow) {
     }).catch((err) => {
         console.log(`Error Launching Dialogue window:: ${err}`);
     });
-    // globalShortcut.register('Ctrl+M', () => {
-    // });
 }
 
 function shortcutKeyBinds_exects(mainWindow) {
