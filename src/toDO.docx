@@ -25,7 +25,7 @@
 ✅ 24: MacOS dock menu.
 ✅ 25. Forge Configuaration.
 ✅ 26. New Window ~ Duplicate Window Feature Support (CTRL + N).
-✅ 27. Home page Mouse right click Support - integration.
+~~ 27. Home page Mouse right click Support - integration.
 ✅ 28. Advanced Web, App and Remote Content security (XSS, RCE protection).
 29. Permission Request Handler (NOTIFICATIONS, P-I-P, Microphone, Camera, Location, Network Access).
 ✅ 30. Update & Migrate App from using global Shortcuts to => BEFORE-INPUT-EVENT with custom shortcuts. (EVENT_INTERCEPTOR).
@@ -51,3 +51,6 @@
 52. AUTO_UPDATER: FOR WINDOWS(ONLY ACCESSIBLE AFTER APP IS INSTALLED ON USERS COMP) || MACOS(Ensure app is signed fir automatic updates. A rekuirement of Skuirel.Mac).
 53. Co-axial File Open Event Process: Default MacOs events, counter-integrate win-64 events.
 ✅ 54. Quick-Type feature, Activate Search Field with "/" keypress.
+55. CLIPBOARD: Perform copy and paste operations on the system clipboard.
+56. CONTINUE_WHERE_YOU_LEFT_OFF_FEATURE: Persist Memory and Store last visited URL to disk, retrieve then load.
+✅ 57. NAVIGATION_DOUBLE_INDEX_JUMP_BUG: Fix it, it's annoying.
