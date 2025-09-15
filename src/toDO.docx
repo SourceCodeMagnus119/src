@@ -54,3 +54,4 @@
 55. CLIPBOARD: Perform copy and paste operations on the system clipboard.
 56. CONTINUE_WHERE_YOU_LEFT_OFF_FEATURE: Persist Memory and Store last visited URL to disk, retrieve then load.
 ✅ 57. NAVIGATION_DOUBLE_INDEX_JUMP_BUG: Fix it, it's annoying.
+58. APP_COMMAND_LINE_LAUNCH_SEKUENCE: WIth 1 Custom argument flag `-o`.
