@@ -1,0 +1,4 @@
+#!/bin/sh
+# Path to your packaged Electron App.
+APP_PATH=$(dirname "$0")/../path/to/your/packaged/app
+"$APP_PATH/Contents/MacOS/syff" "$@"
